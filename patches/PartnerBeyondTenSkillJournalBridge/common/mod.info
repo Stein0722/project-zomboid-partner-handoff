@@ -1,0 +1,9 @@
+name=Partner Beyond Ten - Skill Journal Bridge
+id=PartnerBeyondTenSkillJournalBridge
+description=Safely records and restores Beyond Ten mastery XP through Skill Journal without editing either Workshop mod.
+authors=Partner
+modversion=1.0.1
+versionMin=42.21
+versionMax=42.21
+require=BeyondTen,SkillJournal
+

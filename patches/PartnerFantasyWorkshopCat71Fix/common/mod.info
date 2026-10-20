@@ -1,0 +1,8 @@
+name=Partner Fantasy Workshop Cat71 Model Fix
+id=PartnerFantasyWorkshopCat71Fix
+description=Adds the missing clothes_cat71_L model alias required by FantasyWorkshopVS42_4.0 on Windows. Load immediately after FantasyWorkshopVS42_4.0.
+authors=Partner
+require=FantasyWorkshopVS42_4.0
+modversion=1.0.0
+versionMin=42.21
+versionMax=42.21

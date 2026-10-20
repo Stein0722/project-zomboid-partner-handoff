@@ -1,0 +1,8 @@
+name=Partner Brita Armor B42.21 Compatibility
+id=PartnerBritaArmorB42Compat
+description=Runs a guarded copy of Brita Armor Pack 1.4.9 container compatibility before the original script, avoiding the B42.21 nil getFullName verification crash. Load this immediately before BritasArmorPackB42.
+authors=Partner
+modversion=1.0.0
+versionMin=42.21
+versionMax=42.21
+

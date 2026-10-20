@@ -1,0 +1,12 @@
+ModId,Version,RepositoryContent,RuntimeTestStatus,UpstreamDependency
+PartnerBeyondTenSkillJournalBridge,1.0.1,Full independent source and test,"Clone-save core test passed; original save not enabled","BeyondTen; SkillJournal"
+PartnerCoopZombieBuddyBridge,1.0.0,Full independent source and runtime,Used for co-op bootstrap,ZombieBuddy
+PartnerDynamicWeightCompat,2.6.0,Current source and runtime,"Inventory transfers and endurance behavior tested",ZombieBuddy
+PartnerLargeMapMetaBuffer,1.0.1,Current source and runtime,Used for large-map metadata overflow,ZombieBuddy
+PartnerLegendaryWeaponDrops,1.0.0,Full independent source,Load and configuration verified,"P4Excalibar; Xixi's Weapon Pack; Bust_Masamune"
+PartnerLightweightBallistics,1.1.3,Full independent source,"Damage and audible volume verified in game",BritaCombinedB42 optional
+PartnerSpatialRefugeCoop,1.8.4,Partner scripts only,"Core upgrades shop respirator and autoloot fixes tested","myspatialrefuge; myspatialrefuge_shop"
+PartnerVSGirlAllFemaleBridge,1.0.0,Full independent source,Active in reference mod list,VSGirlBodyExtension
+PartnerVSGirlRenderGuard,1.0.0,Current source and runtime,Active after render-race diagnosis,"ZombieBuddy; VSGirlBodyExtension"
+PartnerBritaArmorB42Compat,1.0.0,Documentation only,Used against Brita Armor 1.4.9,BritasArmorPackB42
+PartnerFantasyWorkshopCat71Fix,1.0.0,Documentation only,Used for cat71 model-name mismatch,FantasyWorkshopVS42_4.0

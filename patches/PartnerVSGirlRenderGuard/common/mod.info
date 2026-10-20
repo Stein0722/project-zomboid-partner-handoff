@@ -1,0 +1,12 @@
+name=Partner VSGirl Render Guard
+id=PartnerVSGirlRenderGuard
+description=Prevents transient worn-item list races in VSGirlBodyExtension from crashing the render thread.
+authors=Partner
+modversion=1.0.0
+versionMin=42.21
+versionMax=42.21
+require=\ZombieBuddy,\VSGirlBodyExtension
+loadModAfter=VSGirlBodyExtension
+javaPreload=true
+javaJarFile=media/java/PartnerVSGirlRenderGuard.jar
+javaPkgName=partner.vsgirlguard

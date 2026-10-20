@@ -1,0 +1,8 @@
+name=Partner Extreme-Rare Legendary Weapon Drops
+id=PartnerLegendaryWeaponDrops
+description=Adds an extremely rare one-in-10000 container drop pool for Excalibar, Xixi's Weapon Pack, and Final Fantasy Weapons. The chance is configurable in Sandbox Options.
+authors=Partner
+modversion=1.0.0
+versionMin=42.21
+versionMax=42.21
+

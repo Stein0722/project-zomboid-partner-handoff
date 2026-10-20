@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.jar binary
+*.csv text eol=lf
+*.md text eol=lf
+*.lua text eol=lf
+*.java text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+

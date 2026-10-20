@@ -1,0 +1,28 @@
+VERSION = 1,
+
+option PartnerLegendaryDrops.Enabled
+{
+    type = boolean,
+    default = true,
+    page = PartnerLegendaryDrops,
+    translation = PartnerLegendaryDrops_Enabled,
+}
+
+option PartnerLegendaryDrops.ContainerChanceDenominator
+{
+    type = integer,
+    min = 1,
+    max = 1000000,
+    default = 10000,
+    page = PartnerLegendaryDrops,
+    translation = PartnerLegendaryDrops_ContainerChanceDenominator,
+}
+
+option PartnerLegendaryDrops.SuppressOriginalSources
+{
+    type = boolean,
+    default = true,
+    page = PartnerLegendaryDrops,
+    translation = PartnerLegendaryDrops_SuppressOriginalSources,
+}
+

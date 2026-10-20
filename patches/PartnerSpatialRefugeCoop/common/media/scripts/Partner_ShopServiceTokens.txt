@@ -1,0 +1,18 @@
+module Base
+{
+    item PartnerLegendaryDrawToken
+    {
+        DisplayCategory = Junk,
+        ItemType = base:normal,
+        Weight = 0,
+        Icon = Katana,
+    }
+
+    item PartnerRepairWeaponsToken
+    {
+        DisplayCategory = Junk,
+        ItemType = base:normal,
+        Weight = 0,
+        Icon = DuctTape,
+    }
+}

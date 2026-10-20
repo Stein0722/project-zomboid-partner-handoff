@@ -1,0 +1,20 @@
+module Base
+{
+    craftRecipe PartnerInstallRespiratorFilter
+    {
+        timedAction = Making,
+        time = 30,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 [Base.Hat_BuildersRespirator_nofilter] mode:destroy flags[AllowFavorite;ItemCount],
+            item 1 [Base.RespiratorFilters;Base.RespiratorFiltersRecharged] mode:destroy flags[ItemCount;NotEmpty;InheritUses],
+        }
+        outputs
+        {
+            item 1 Base.Hat_BuildersRespirator,
+        }
+    }
+}

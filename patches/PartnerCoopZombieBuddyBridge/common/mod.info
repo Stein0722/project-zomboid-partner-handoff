@@ -1,0 +1,10 @@
+name=Partner Coop ZombieBuddy Bridge
+id=PartnerCoopZombieBuddyBridge
+description=Starts the built-in co-op server with ZombieBuddy so server-side Java mods can apply before inventory validation.
+authors=Partner
+modversion=1.0.0
+versionMin=42.21
+versionMax=42.21
+require=\ZombieBuddy
+javaJarFile=media/java/PartnerCoopZombieBuddyBridge.jar
+javaPkgName=partner.coopbridge

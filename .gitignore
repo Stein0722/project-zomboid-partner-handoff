@@ -1,0 +1,19 @@
+# Never publish live saves, logs, backups, or personal machine state.
+*.log
+*.zip
+*.7z
+*.bak
+*.tmp
+console.txt
+logs.zip
+Saves/
+_PartnerBackups/
+backup*/
+build/
+decompiled/
+retired*/
+staging/
+tmp/
+.DS_Store
+Thumbs.db
+

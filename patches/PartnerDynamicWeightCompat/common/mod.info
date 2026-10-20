@@ -1,0 +1,11 @@
+name=Partner All Weight 0.01x + MP Map Fix
+id=PartnerDynamicWeightCompat
+description=Scales final carried item weight to 0.01x for inventory totals and container checks, synchronizes character inventory capacity with the displayed maximum, prevents stale Heavy Load endurance penalties, and fixes the multiplayer world map.
+authors=Partner
+modversion=2.6.0
+versionMin=42.21
+versionMax=42.21
+require=\ZombieBuddy
+javaPreload=true
+javaJarFile=media/java/PartnerDynamicWeightCompat.jar
+javaPkgName=partner.dynamicweight

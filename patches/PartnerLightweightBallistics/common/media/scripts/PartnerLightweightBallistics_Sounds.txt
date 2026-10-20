@@ -1,0 +1,52 @@
+module Base
+{
+    sound PLB_Brita_DoubleBarrelShotgunShoot
+    {
+        category = Item,
+        maxInstancesPerEmitter = 2,
+        clip { event = Weapon/Firearm/DoubleBarrelShotgun/Shoot, distanceMax = 1000, }
+    }
+    sound PLB_Brita_JS2000ShotgunShoot
+    {
+        category = Item,
+        maxInstancesPerEmitter = 2,
+        clip { event = Weapon/Firearm/JS2000Shotgun/Shoot, distanceMax = 1000, }
+    }
+    sound PLB_Brita_M14Shoot
+    {
+        category = Item,
+        maxInstancesPerEmitter = 2,
+        clip { event = Weapon/Firearm/M14/Shoot, distanceMax = 1000, }
+    }
+    sound PLB_Brita_M16Shoot
+    {
+        category = Item,
+        maxInstancesPerEmitter = 2,
+        clip { event = Weapon/Firearm/M16/Shoot, distanceMax = 1000, }
+    }
+    sound PLB_Brita_M1911Shoot
+    {
+        category = Item,
+        maxInstancesPerEmitter = 2,
+        clip { event = Weapon/Firearm/M1911/Shoot, distanceMax = 1000, }
+    }
+    sound PLB_Brita_M9Shoot
+    {
+        category = Item,
+        maxInstancesPerEmitter = 2,
+        clip { event = Weapon/Firearm/M9/Shoot, distanceMax = 1000, }
+    }
+    sound PLB_Brita_MagnumShoot
+    {
+        category = Item,
+        maxInstancesPerEmitter = 2,
+        clip { event = Weapon/Firearm/Magnum/Shoot, distanceMax = 1000, }
+    }
+    sound PLB_Brita_MSR700Shoot
+    {
+        category = Item,
+        maxInstancesPerEmitter = 2,
+        clip { event = Weapon/Firearm/MSR700/Shoot, distanceMax = 1000, }
+    }
+}
+

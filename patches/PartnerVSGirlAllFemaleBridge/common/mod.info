@@ -1,0 +1,11 @@
+name=Partner VSGirl All-Female Zombie Bridge
+id=PartnerVSGirlAllFemaleBridge
+description=Safely makes newly created zombies female while keeping VSGirl Body Extension and its clothing compatibility active. Does not load the incompatible original All-female asset pack.
+authors=Partner
+modversion=1.0.0
+versionMin=42.21
+versionMax=42.21
+require=\VSGirlBodyExtension
+incompatible=\42_VSGirlBodyAll_female
+loadModAfter=VSGirlBodyExtension,VSGirlBodyExtensionClothingCompatibility
+

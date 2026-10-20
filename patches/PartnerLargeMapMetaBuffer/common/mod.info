@@ -1,0 +1,11 @@
+name=Partner Large Map Metadata Buffer
+id=PartnerLargeMapMetaBuffer
+description=Raises Project Zomboid's fixed map metadata scratch buffer from 10 MiB to 64 MiB for very large custom-map collections such as Daegu. Requires ZombieBuddy.
+authors=Partner
+modversion=1.0.1
+versionMin=42.21
+versionMax=42.21
+require=\ZombieBuddy
+javaPreload=true
+javaJarFile=media/java/PartnerLargeMapMetaBuffer.jar
+javaPkgName=partner.largemapbuffer
