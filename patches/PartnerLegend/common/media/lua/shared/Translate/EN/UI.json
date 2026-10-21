@@ -1,0 +1,8 @@
+{
+  "UI_PL_Name": "Partner Legend — Titles and Medals",
+  "UI_PL_Settings": "Achievements (F8: open list)",
+  "UI_PL_Reward": "Medal damage efficiency (%)",
+  "UI_PL_Cap": "Combined medal damage cap (%)",
+  "UI_PL_KillReq": "Kill requirement multiplier (%)",
+  "UI_PL_DayReq": "Survival-day requirement multiplier (%)"
+}
