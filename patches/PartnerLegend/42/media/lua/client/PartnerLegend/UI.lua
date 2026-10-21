@@ -22,7 +22,7 @@ local function openAchievements()
         local unit=m.kind=="kills" and "킬" or m.kind=="days" and "일" or "레벨"
         lines[#lines+1]=(d.medals[m.id] and "[획득] " or "[미획득] ")
             ..m.name.." - "..tostring(L.Required(m.kind,m.target))..unit
-            .." (+"..tostring(m.bonus).."%)<LINE>"
+            .." (+"..tostring(L.GetMedalBonus(m)).."%)<LINE>"
     end
     lines[#lines+1]="<LINE>F8: 닫기 / 피해 보상은 게임 모드 설정에서 조절"
     if window then window:removeFromUIManager();window=nil end

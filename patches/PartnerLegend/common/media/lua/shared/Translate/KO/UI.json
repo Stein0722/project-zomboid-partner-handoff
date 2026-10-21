@@ -4,5 +4,10 @@
   "UI_PL_Reward": "훈장 피해 보상 효율 (%)",
   "UI_PL_Cap": "훈장 피해 보너스 합계 상한 (%)",
   "UI_PL_KillReq": "킬 요구량 배율 (%)",
-  "UI_PL_DayReq": "생존 일수 요구량 배율 (%)"
+  "UI_PL_DayReq": "생존 일수 요구량 배율 (%)",
+  "UI_PL_GroupSettings": "훈장 종류별 보상 배율",
+  "UI_PL_SurvivalReward": "생존 훈장 보상 배율 (%)",
+  "UI_PL_SkillReward": "숙련 훈장 보상 배율 (%)",
+  "UI_PL_CombatReward": "전투 훈장 보상 배율 (%)",
+  "UI_PL_MedalSettings": "훈장별 기본 피해 보너스 (0이면 보상 OFF)"
 }

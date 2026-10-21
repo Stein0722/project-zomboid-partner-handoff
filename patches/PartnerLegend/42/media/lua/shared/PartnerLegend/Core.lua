@@ -1,6 +1,6 @@
 PartnerLegend = PartnerLegend or {}
 local L = PartnerLegend
-L.VERSION = "0.1.0"
+L.VERSION = "0.1.1"
 L.DATA_KEY = "PartnerLegend_v1"
 L.TITLES = {
     {100,"첫 번째 피"},{1000,"좀비 사냥꾼"},{5000,"무리의 사냥꾼"},
@@ -14,29 +14,32 @@ L.MELEE_PERKS = {
 }
 -- Each medal awards percentage points of damage, not a full multiplier.
 L.MEDALS = {}
-local function medal(id,name,kind,target,scope,bonus,perk)
+local function medal(id,name,kind,target,scope,bonus,perk,group)
     L.MEDALS[#L.MEDALS+1] = {
-        id=id,name=name,kind=kind,target=target,scope=scope,bonus=bonus,perk=perk
+        id=id,name=name,kind=kind,target=target,scope=scope,bonus=bonus,perk=perk,
+        group=group or kind
     }
 end
-medal("days_7","생존 본능","days",7,"melee",1)
-medal("days_30","강인한 생존자","days",30,"ranged",1)
-medal("days_100","백전노장","days",100,"all",2)
-medal("days_365","불굴의 의지","days",365,"all",3)
-medal("days_1000","살아있는 전설","days",1000,"all",5)
+medal("days_7","생존 본능","days",7,"melee",1,nil,"survival")
+medal("days_30","강인한 생존자","days",30,"ranged",1,nil,"survival")
+medal("days_100","백전노장","days",100,"all",2,nil,"survival")
+medal("days_365","불굴의 의지","days",365,"all",3,nil,"survival")
+medal("days_1000","살아있는 전설","days",1000,"all",5,nil,"survival")
 for _,p in ipairs(L.MELEE_PERKS) do
-    medal("skill_"..p[1].."_10",p[2].." 입문자","skill",10,"perk",1,p[1])
-    medal("skill_"..p[1].."_15",p[2].." 달인","skill",15,"perk",3,p[1])
-    medal("skill_"..p[1].."_20",p[2].." 극의","skill",20,"perk",5,p[1])
+    medal("skill_"..p[1].."_10",p[2].." 입문자","skill",10,"perk",1,p[1],"skill")
+    medal("skill_"..p[1].."_15",p[2].." 달인","skill",15,"perk",3,p[1],"skill")
+    medal("skill_"..p[1].."_20",p[2].." 극의","skill",20,"perk",5,p[1],"skill")
 end
-medal("aim_15","사격 전문가","skill",15,"ranged",3,"Aiming")
-medal("aim_20","전설의 사수","skill",20,"ranged",5,"Aiming")
-medal("kill_10000","좀비 학살자","kills",10000,"all",1)
-medal("kill_50000","죽음의 군단","kills",50000,"all",2)
-medal("kill_500000","재앙의 종결","kills",500000,"all",3)
-medal("kill_1000000","인류의 구원","kills",1000000,"none",0)
+medal("aim_15","사격 전문가","skill",15,"ranged",3,"Aiming","skill")
+medal("aim_20","전설의 사수","skill",20,"ranged",5,"Aiming","skill")
+medal("kill_10000","좀비 학살자","kills",10000,"all",1,nil,"combat")
+medal("kill_50000","죽음의 군단","kills",50000,"all",2,nil,"combat")
+medal("kill_500000","재앙의 종결","kills",500000,"all",3,nil,"combat")
+medal("kill_1000000","인류의 구원","kills",1000000,"none",0,nil,"combat")
 L.Settings = {
-    rewardEfficiency=100,damageCap=20,killRequirement=100,dayRequirement=100
+    rewardEfficiency=100,damageCap=20,killRequirement=100,dayRequirement=100,
+    survivalEfficiency=100,skillEfficiency=100,combatEfficiency=100,
+    medalBonuses={}
 }
 local function clamp(n,lo,hi)
     return math.max(lo,math.min(hi,tonumber(n) or lo))
@@ -45,11 +48,29 @@ function L.Configure(values)
     if type(values)~="table" then return end
     local limits = {
         rewardEfficiency={0,200},damageCap={0,100},
-        killRequirement={25,300},dayRequirement={25,300}
+        killRequirement={25,300},dayRequirement={25,300},
+        survivalEfficiency={0,200},skillEfficiency={0,200},combatEfficiency={0,200}
     }
     for k,v in pairs(limits) do
         if values[k]~=nil then L.Settings[k]=clamp(values[k],v[1],v[2]) end
     end
+    if type(values.medalBonuses)=="table" then
+        for _,m in ipairs(L.MEDALS) do
+            if values.medalBonuses[m.id]~=nil then
+                L.Settings.medalBonuses[m.id]=clamp(values.medalBonuses[m.id],0,20)
+            end
+        end
+    end
+end
+function L.GetMedalBonus(medalDef)
+    if not medalDef then return 0 end
+    local custom=L.Settings.medalBonuses[medalDef.id]
+    if custom~=nil then return tonumber(custom) or 0 end
+    return tonumber(medalDef.bonus) or 0
+end
+function L.GetGroupEfficiency(group)
+    local key=tostring(group or "").."Efficiency"
+    return clamp(L.Settings[key] or 100,0,200)/100
 end
 function L.Required(kind,target)
     local pct=kind=="kills" and L.Settings.killRequirement
@@ -139,7 +160,9 @@ function L.DamageBonus(player,ranged,perkID)
             (m.scope=="melee" and not ranged) or
             (m.scope=="ranged" and ranged) or
             (m.scope=="perk" and not ranged and m.perk==perkID)
-        ) then sum=sum+m.bonus end
+        ) then
+            sum=sum+L.GetMedalBonus(m)*L.GetGroupEfficiency(m.group)
+        end
     end
     return math.min(L.Settings.damageCap,sum*L.Settings.rewardEfficiency/100)
 end

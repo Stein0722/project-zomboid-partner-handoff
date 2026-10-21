@@ -4,5 +4,10 @@
   "UI_PL_Reward": "Medal damage efficiency (%)",
   "UI_PL_Cap": "Combined medal damage cap (%)",
   "UI_PL_KillReq": "Kill requirement multiplier (%)",
-  "UI_PL_DayReq": "Survival-day requirement multiplier (%)"
+  "UI_PL_DayReq": "Survival-day requirement multiplier (%)",
+  "UI_PL_GroupSettings": "Reward multipliers by medal group",
+  "UI_PL_SurvivalReward": "Survival medal rewards (%)",
+  "UI_PL_SkillReward": "Skill medal rewards (%)",
+  "UI_PL_CombatReward": "Combat medal rewards (%)",
+  "UI_PL_MedalSettings": "Base damage by medal (0 disables its reward)"
 }
