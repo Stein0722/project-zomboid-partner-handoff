@@ -49,5 +49,5 @@
 
 - Brita Armor 호환패치는 확인 버전 1.4.9 기준입니다. 업데이트되면 원본 해시와 오류 재검사가 필요합니다.
 - Partner 패치들은 Build 42.21 기준입니다.
-- `PartnerMasteryExtension` 0.1.0은 Beyond Ten 1.3.4 / API 1과 싱글플레이만 지원합니다. 멀티 서버에서는 사용하지 않습니다.
+- `PartnerMasteryExtension` 0.2.0은 Beyond Ten 1.3.4 / API 1과 싱글플레이만 지원합니다. 멀티 서버에서는 사용하지 않습니다.
 - Workshop 업데이트 뒤에는 `mod.info`, 함수 이름, 로그를 다시 비교해야 합니다.

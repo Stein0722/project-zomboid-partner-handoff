@@ -57,6 +57,8 @@ assertEqual(BeyondTen.GetStoredXP(character, perk), 15500, "actual record keeps 
 assertEqual(BeyondTen.MAX_LEVEL, 15, "actual Beyond Ten cap returns to 15")
 assertEqual(BeyondTen.GetEffectiveLevel(character, perk), 15, "actual bonus-facing level remains 15")
 assertEqual(PartnerMasteryExtension.GetEffectiveLevel(character, perk), 20, "companion-facing level reaches 20")
+assertEqual(BeyondTen.GetMasteryRanks(character, perk), 7.5, "actual core bonuses receive half-strength ranks through level 20")
+assertEqual(PartnerMasteryExtension.GetBonusRanks(character, perk), 7.5, "public weighted-rank API")
 assertEqual(PartnerMasteryExtension.GetMaximumStoredXP(perk), 15500, "actual level-20 cost")
 assertEqual(PartnerMasteryExtension.GetExtensionXP(character, perk), 9000, "actual 16-20 XP segment")
 
@@ -66,5 +68,6 @@ assertEqual(level, 18, "negative award lowers actual extended level")
 assertEqual(current, 1850, "actual level-19 progress is retained")
 assertEqual(required, 1900, "actual level-19 requirement")
 assertEqual(BeyondTen.GetEffectiveLevel(character, perk), 15, "bonus-facing level remains capped after loss")
+assertEqual(BeyondTen.GetMasteryRanks(character, perk), 6.5, "actual weighted ranks follow the lowered level")
 
 print("BEYOND_TEN_134_INTEGRATION_TEST_OK")

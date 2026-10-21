@@ -58,6 +58,9 @@ function BeyondTen.GetEffectiveLevel(character, value)
     if BeyondTen.GetNativeLevel(character, value) < 10 then return 0 end
     return BeyondTen.GetMasteryState(character, value)
 end
+function BeyondTen.GetMasteryRanks(character, value)
+    return math.max(0, BeyondTen.GetEffectiveLevel(character, value) - 10)
+end
 function BeyondTen.GetLevelProgress(character, value)
     return BeyondTen.GetMasteryState(character, value)
 end
@@ -90,6 +93,8 @@ assertEqual(BeyondTen.MAX_LEVEL, 15, "temporary maximum is restored after write"
 
 assertEqual(BeyondTen.GetEffectiveLevel(player, perk), 15, "Beyond Ten bonuses still see level 15")
 assertEqual(PartnerMasteryExtension.GetEffectiveLevel(player, perk), 18, "extension UI sees level 18")
+assertEqual(BeyondTen.GetMasteryRanks(player, perk), 6.5, "level 18 grants half-strength extension ranks")
+assertEqual(PartnerMasteryExtension.GetBonusRanks(player, perk), 6.5, "public bonus-rank API matches Beyond Ten")
 assertEqual(PartnerMasteryExtension.GetExtensionXP(player, perk), 350, "extension XP excludes levels 11-15")
 assertEqual(PartnerMasteryExtension.GetMaximumStoredXP(perk), 1000, "level-20 storage maximum")
 assertEqual(BeyondTen.MAX_LEVEL, 15, "read helper restores bonus cap")
@@ -97,10 +102,19 @@ assertEqual(BeyondTen.MAX_LEVEL, 15, "read helper restores bonus cap")
 BeyondTen.AddStoredXP(player, perk, 500)
 assertEqual(stored, 1000, "storage clamps at level 20")
 assertEqual(PartnerMasteryExtension.GetEffectiveLevel(player, perk), 20, "reaches level 20")
+assertEqual(BeyondTen.GetMasteryRanks(player, perk), 7.5, "level 20 grants five half-strength ranks")
+
+PartnerMasteryExtension.Configure({ bonusEfficiency = 100 })
+assertEqual(BeyondTen.GetMasteryRanks(player, perk), 10, "live option can raise extension efficiency")
+PartnerMasteryExtension.Configure({ bonusEfficiency = 0 })
+assertEqual(BeyondTen.GetMasteryRanks(player, perk), 5, "live option can disable only extension bonuses")
+PartnerMasteryExtension.Configure({ bonusEfficiency = 50 })
+assertEqual(BeyondTen.GetMasteryRanks(player, perk), 7.5, "live option returns to default")
 
 BeyondTen.AddStoredXP(player, perk, -250)
 assertEqual(stored, 750, "negative XP can lower extension progress")
 assertEqual(PartnerMasteryExtension.GetEffectiveLevel(player, perk), 17, "level falls with negative XP")
 assertEqual(BeyondTen.GetEffectiveLevel(player, perk), 15, "bonus level remains capped after negative XP")
+assertEqual(BeyondTen.GetMasteryRanks(player, perk), 6, "weighted bonus ranks fall with extension level")
 
 print("PARTNER_MASTERY_EXTENSION_CONTRACT_TEST_OK")

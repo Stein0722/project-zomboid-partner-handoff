@@ -4,11 +4,15 @@ PartnerMasteryExtension = PartnerMasteryExtension or {}
 local PME = PartnerMasteryExtension
 local BT = BeyondTen
 
-PME.VERSION = "0.1.0"
+PME.VERSION = "0.2.0"
 PME.API_VERSION = 1
 PME.MAX_LEVEL = 20
 PME.BONUS_MAX_LEVEL = 15
 PME.EXTRA_LEVELS = PME.MAX_LEVEL - PME.BONUS_MAX_LEVEL
+PME.DEFAULT_BONUS_EFFICIENCY = 50
+PME.Settings = PME.Settings or {
+    bonusEfficiency = PME.DEFAULT_BONUS_EFFICIENCY,
+}
 PME.SUPPORTED_BEYOND_TEN = "1.3.4"
 PME.SINGLE_PLAYER_ONLY = true
 
@@ -20,6 +24,25 @@ end
 
 local function log(message)
     print("[PartnerMasteryExtension] " .. tostring(message))
+end
+
+function PME.Configure(values)
+    if type(values) == "table" and values.bonusEfficiency ~= nil then
+        PME.Settings.bonusEfficiency = BT.Clamp(
+            tonumber(values.bonusEfficiency) or PME.DEFAULT_BONUS_EFFICIENCY,
+            0,
+            150
+        )
+    end
+    return PME.Settings.bonusEfficiency
+end
+
+function PME.GetBonusEfficiency()
+    return BT.Clamp(
+        tonumber(PME.Settings.bonusEfficiency) or PME.DEFAULT_BONUS_EFFICIENCY,
+        0,
+        150
+    ) / 100
 end
 
 -- Beyond Ten uses BT.MAX_LEVEL both for storage capacity and for gameplay
@@ -85,6 +108,29 @@ function PME.GetExtensionXP(character, perkOrId)
     return math.max(0, BT.GetStoredXP(character, perk) - baseMaximum)
 end
 
+function PME.GetExtensionRanks(character, perkOrId)
+    local level = PME.GetEffectiveLevel(character, perkOrId)
+    return math.max(0, math.min(PME.MAX_LEVEL, tonumber(level) or 0) - PME.BONUS_MAX_LEVEL)
+end
+
+local function weightedMasteryRanks(original, character, perkOrId)
+    local baseRanks = tonumber(original(character, perkOrId)) or 0
+    if not BT.IsFinite(baseRanks) then baseRanks = 0 end
+
+    local perk = BT.ResolvePerk(perkOrId)
+    if not character or not perk then return math.max(0, baseRanks) end
+
+    local extraRanks = PME.GetExtensionRanks(character, perk)
+    return math.max(0, baseRanks + extraRanks * PME.GetBonusEfficiency())
+end
+
+function PME.GetBonusRanks(character, perkOrId)
+    local state = PME._masteryRanksWrapper
+    local original = state and state.original or BT.GetMasteryRanks
+    if type(original) ~= "function" then return 0 end
+    return weightedMasteryRanks(original, character, perkOrId)
+end
+
 local function installStorageExtension()
     if not PME.IsSupported() then
         log("unsupported Beyond Ten state; expected 1.3.4 API 1 with level 15 cap")
@@ -117,8 +163,38 @@ local function installStorageExtension()
     }
     BT.SetStoredXP = wrapper
     PME._installed = true
-    log("installed v" .. PME.VERSION .. " (single-player, levels 16-20 store XP only)")
+    log("installed v" .. PME.VERSION .. " (single-player, level 20 storage and UI)")
     return true
 end
 
-installStorageExtension()
+local function installBonusExtension()
+    if not PME.IsSupported() then return false end
+
+    local state = PME._masteryRanksWrapper
+    if state and BT.GetMasteryRanks == state.wrapper then return true end
+
+    local original = BT.GetMasteryRanks
+    if type(original) ~= "function" then
+        log("Beyond Ten GetMasteryRanks API is unavailable")
+        return false
+    end
+
+    local wrapper = function(character, perkOrId)
+        return weightedMasteryRanks(original, character, perkOrId)
+    end
+
+    PME._masteryRanksWrapper = {
+        original = original,
+        wrapper = wrapper,
+    }
+    BT.GetMasteryRanks = wrapper
+    PME._bonusInstalled = true
+    return true
+end
+
+local storageInstalled = installStorageExtension()
+local bonusInstalled = installBonusExtension()
+if storageInstalled and bonusInstalled then
+    log("level 16-20 bonuses enabled at "
+        .. tostring(math.floor(PME.GetBonusEfficiency() * 100 + 0.5)) .. "% efficiency")
+end
