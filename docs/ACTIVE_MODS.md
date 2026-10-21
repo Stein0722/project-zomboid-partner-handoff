@@ -2,7 +2,7 @@
 
 - 기준 세이브: `2026-10-17_07-34-08`
 - 기준 파일 갱신 시각: `2026-10-22 06:40`
-- 활성 Mod ID 수: **191**
+- 활성 Mod ID 수: **192**
 - 이 목록은 설치 상태의 스냅샷이며, 다른 세이브나 이후 변경을 자동 반영하지 않습니다.
 
 | 순서 | Mod ID | 표시 이름 | 출처 | Workshop | 버전 |
@@ -198,3 +198,4 @@
 | 189 | `Bust_Masamune` | Final Fantasy Weapons: Buster, Masamune, Mythril Rod, Cerberus & Gatling Gun | Steam Workshop | [3774344755](https://steamcommunity.com/sharedfiles/filedetails/?id=3774344755) | 42.20.24 |
 | 190 | `PartnerLegendaryWeaponDrops` | Partner Extreme-Rare Legendary Weapon Drops | Local Partner patch |  | 1.0.0 |
 | 191 | `PartnerLightweightBallistics` | Partner Lightweight Realistic Ballistics | Local Partner patch |  | 1.1.3 |
+| 192 | `PartnerLegend` | Partner Legend - Titles and Medals | Local Partner patch |  | 0.1.2 |
