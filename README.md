@@ -22,10 +22,10 @@
 
 ## 중요한 상태
 
-- 현재 원본 싱글 세이브에는 `BeyondTen`과 `PartnerBeyondTenSkillJournalBridge`가 아직 활성화되지 않았습니다.
+- 원본 싱글 세이브는 전체 백업 뒤 `BeyondTen` → `PartnerMasteryExtension` → `PartnerBeyondTenSkillJournalBridge` 순서로 활성 목록에 추가했습니다. 첫 본세이브 실행 확인은 아직 남았습니다.
 - 두 모드는 복제 세이브에서 15레벨 표시, 경험치 획득, 일기장 기록, 재시작 유지, 사망 후 새 캐릭터 복구, Traits As Skills 병용, 전투와 프레임을 확인했습니다.
 - `PartnerBeyondTenSkillJournalBridge` v1.0.1은 복제 세이브 인게임 시험을 통과했습니다. 선택적 16~20 XP 보존을 더한 v1.1.0은 자동 계약 시험을 통과했지만 아직 인게임 시험 전입니다.
-- `PartnerMasteryExtension` v0.2.0은 16~20레벨 XP·보라색 UI와 핵심 보너스 50% 연장을 추가하는 싱글플레이 베타입니다. 보라색 UI는 복제 세이브에서 확인했고 v0.2.0 보너스 계산은 자동 시험을 통과했지만 실제 원본 세이브에는 아직 설치하지 않았습니다.
+- `PartnerMasteryExtension` v0.2.1은 16~20레벨 XP·보라색 UI와 핵심 보너스 50% 연장을 추가하는 싱글플레이 베타입니다. 보라색 UI는 복제 세이브에서 확인했고 보너스 계산과 Build 42 JSON 번역 검증을 통과했습니다.
 - 오래된 More Traits와 More Traits Definitive는 동시에 사용하지 않습니다. 현재 기준 목록은 Definitive 계열입니다.
 - Project RPG, Sleep With Friends, Viewpoint 계열은 현재 기준 목록에서 제외되어 있습니다.
 

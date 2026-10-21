@@ -1,0 +1,8 @@
+{
+    "UI_PME_ModName": "파트너 마스터리 확장",
+    "UI_PME_Title_Settings": "16~20레벨 보너스",
+    "UI_PME_BonusEfficiency": "추가 보너스 효율 (%)",
+    "UI_PME_BonusEfficiency_Tooltip": "16~20레벨의 추가 보너스 세기입니다. 0은 추가 보너스 없음, 50은 기본 권장값, 100은 11~15와 같은 세기입니다. 적용 후 다음 행동부터 반영됩니다.",
+    "UI_PME_Mastery": "파트너 숙련",
+    "UI_PME_StorageOnly": "16~20레벨은 모드 설정의 효율만큼 Beyond Ten 핵심 보너스가 증가합니다."
+}

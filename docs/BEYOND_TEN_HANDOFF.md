@@ -2,7 +2,7 @@
 
 ## 현재 결론
 
-`PartnerBeyondTenSkillJournalBridge` v1.0.1은 복제 세이브에서 핵심 시험을 통과했습니다. 현재 저장소의 브리지는 선택적 16~20 XP 보존을 더한 v1.1.0이며 자동 시험까지 통과했습니다. `PartnerMasteryExtension` v0.2.0은 16~20 XP·보라색 UI·핵심 보너스 50% 연장과 실시간 설정을 제공합니다. 보라색 UI는 복제 세이브에서 확인했고 v0.2.0 계산은 자동 시험을 통과했습니다. 기준 원본 세이브의 활성 목록에는 여전히 `BeyondTen`과 Partner 확장/브리지가 없습니다.
+`PartnerBeyondTenSkillJournalBridge` v1.0.1은 복제 세이브에서 핵심 시험을 통과했습니다. 현재 저장소의 브리지는 선택적 16~20 XP 보존을 더한 v1.1.0이며 자동 시험까지 통과했습니다. `PartnerMasteryExtension` v0.2.1은 16~20 XP·보라색 UI·핵심 보너스 50% 연장과 실시간 설정을 제공합니다. 보라색 UI는 복제 세이브에서 확인했고 v0.2.1 계산은 자동 시험을 통과했습니다. Build 42 JSON 번역도 추가했습니다.
 
 ## 확인한 버전
 
@@ -49,20 +49,20 @@
 - Skill Journal은 절대 XP가 아니라 노력량과 캐릭터 배율을 사용하므로, 기록자와 복구 캐릭터의 직업·특성이 다르면 기본 1~10 복구 결과가 달라질 수 있습니다.
 - 시험에서는 기록자와 새 캐릭터 모두 `기량: 둔기` 특성을 맞춘 뒤 정확 복구를 확인했습니다.
 
-## 원본 적용의 다음 순서
+## 원본 적용 상태와 다음 순서
 
-1. 게임 완전 종료
-2. 원본 세이브 ZIP 백업과 목록 검증
-3. 원본 `mods.txt`의 `SkillJournal` 뒤에 `BeyondTen`, `PartnerMasteryExtension`, `PartnerBeyondTenSkillJournalBridge` 순서로 추가
-4. 첫 로드 뒤 16~20 보라색 UI, 모드 설정의 보너스 효율 슬라이더, 로그, 기존 TAS 상태 확인
-5. 일기장 기록 전 추가 백업
-6. 오류가 있으면 원본 세이브를 계속 플레이하지 말고 백업으로 복원
+1. 게임 완전 종료와 복제 세이브 로그 확인 완료
+2. 원본 세이브 전체 백업 완료: `20261021_225429_MainSave_Before_PartnerMastery`
+3. 원본 `mods.txt`의 `SkillJournal` 뒤에 `BeyondTen`, `PartnerMasteryExtension`, `PartnerBeyondTenSkillJournalBridge` 순서로 추가 완료
+4. 첫 로드 뒤 16~20 보라색 UI, 한글 모드 설정, 로그, 기존 TAS 상태 확인 필요
+5. 일기장 기록 전 추가 백업 권장
+6. 오류가 있으면 원본 세이브를 계속 플레이하지 말고 위 백업으로 복원
 
 ## 장기 확장
 
 최대 20/25레벨이나 레벨별 효과 변경은 가능성이 있지만 Beyond Ten의 UI, XP 비용, 저장 상한, 보너스 누적을 함께 다뤄야 합니다. 원본의 명시적 재배포 라이선스를 확인하지 못했으므로 전체 포크보다 별도 `Partner Mastery Core`가 안전합니다.
 
-## Partner Mastery Extension 0.2.0
+## Partner Mastery Extension 0.2.1
 
 - 범위: 16~20 XP 저장, 보라색 UI 칸 5개, 공통 숙련 보너스 50% 연장
 - 설정: 모드 설정에서 0~150%, 5% 단위로 조절하며 적용 뒤 다음 행동부터 반영
@@ -75,7 +75,7 @@
 - 인게임 확인: 보라색 20칸 UI
 - 미확인: 자연 15→16·19→20, 보너스 체감, 재접속, 16~20 일기장 복구, FPS
 
-### v0.2.0 자연 성장 확인 순서
+### v0.2.1 자연 성장 확인 순서
 
 1. 원본이 아닌 복제 세이브 사용
 2. `BeyondTen` 다음에 `PartnerMasteryExtension`을 두고, `SkillJournal`도 켠 뒤 세 모드보다 아래에 브리지 1.1.0 배치

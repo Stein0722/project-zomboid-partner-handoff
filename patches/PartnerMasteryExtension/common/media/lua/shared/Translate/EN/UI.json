@@ -1,0 +1,8 @@
+{
+    "UI_PME_ModName": "Partner Mastery Extension",
+    "UI_PME_Title_Settings": "Level 16-20 Bonuses",
+    "UI_PME_BonusEfficiency": "Extra bonus efficiency (%)",
+    "UI_PME_BonusEfficiency_Tooltip": "Controls the strength of level 16-20 bonuses. 0 disables extra bonuses, 50 is the recommended default, and 100 matches levels 11-15. Applies to subsequent actions.",
+    "UI_PME_Mastery": "Partner Mastery",
+    "UI_PME_StorageOnly": "Levels 16-20 extend core Beyond Ten bonuses using the configured efficiency."
+}

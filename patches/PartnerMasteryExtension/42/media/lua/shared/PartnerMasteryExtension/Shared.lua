@@ -4,7 +4,7 @@ PartnerMasteryExtension = PartnerMasteryExtension or {}
 local PME = PartnerMasteryExtension
 local BT = BeyondTen
 
-PME.VERSION = "0.2.0"
+PME.VERSION = "0.2.1"
 PME.API_VERSION = 1
 PME.MAX_LEVEL = 20
 PME.BONUS_MAX_LEVEL = 15

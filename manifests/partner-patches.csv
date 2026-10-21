@@ -1,6 +1,6 @@
 ModId,Version,RepositoryContent,RuntimeTestStatus,UpstreamDependency
 PartnerBeyondTenSkillJournalBridge,1.1.0,Full independent source and test,"v1.0.1 clone-save core test passed; v1.1.0 automated test passed; original save not enabled","BeyondTen; SkillJournal; PartnerMasteryExtension optional"
-PartnerMasteryExtension,0.2.0,Full independent source and tests,"Purple UI observed in clone; v0.2 bonus and settings automated tests passed; original save not enabled",BeyondTen
+PartnerMasteryExtension,0.2.1,Full independent source and tests,"Purple UI observed in clone; bonus settings and Build 42 JSON translation automated tests passed",BeyondTen
 PartnerCoopZombieBuddyBridge,1.0.0,Full independent source and runtime,Used for co-op bootstrap,ZombieBuddy
 PartnerDynamicWeightCompat,2.6.0,Current source and runtime,"Inventory transfers and endurance behavior tested",ZombieBuddy
 PartnerLargeMapMetaBuffer,1.0.1,Current source and runtime,Used for large-map metadata overflow,ZombieBuddy
