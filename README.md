@@ -12,7 +12,8 @@
 ## 현재 기준
 
 - 게임: Project Zomboid Build 42.21.0
-- 기준 싱글 세이브의 활성 Mod ID: 188개
+- 기준 싱글 세이브의 활성 Mod ID: 191개
+- 공웹 파트너 시작점: [START_HERE_WEB_PARTNER.md](START_HERE_WEB_PARTNER.md)
 - 모드 목록 스냅샷: [docs/ACTIVE_MODS.md](docs/ACTIVE_MODS.md)
 - Partner 패치 목록: [docs/PATCH_CATALOG.md](docs/PATCH_CATALOG.md)
 - 작업 연혁: [docs/WORK_HISTORY.md](docs/WORK_HISTORY.md)
