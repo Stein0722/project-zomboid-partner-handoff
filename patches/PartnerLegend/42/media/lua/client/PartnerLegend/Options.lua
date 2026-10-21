@@ -18,7 +18,7 @@ options:addTitle(getText("UI_PL_MedalSettings"))
 local medalOptions={}
 for _,m in ipairs(L.MEDALS) do
     medalOptions[m.id]=options:addSlider(
-        "Medal_"..m.id,m.name.." (%)",0,20,0.5,m.bonus
+        "Medal_"..m.id,L.GetMedalName(m).." (%)",0,20,0.5,m.bonus
     )
 end
 local function sync()

@@ -97,7 +97,8 @@ local function minute()
     local equipped=p:getPrimaryHandItem()
     if new>0 or equipped~=lastWeapon then L.Refresh(p) end
     if new>0 and HaloTextHelper and HaloTextHelper.addText then
-        HaloTextHelper.addText(p,"Partner Legend: +"..tostring(new).." 업적")
+        HaloTextHelper.addText(p,"Partner Legend: +"..tostring(new)
+            ..L.Text("UI_PL_Halo_Achievements"," achievements"))
     end
 end
 Events.OnGameStart.Add(function()

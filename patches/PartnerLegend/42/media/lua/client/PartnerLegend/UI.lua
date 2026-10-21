@@ -10,27 +10,38 @@ local function openAchievements()
     local d=L.GetData(p)
     local kills,days=L.Stats(p)
     local title=L.BestTitle(p)
-    local lines={"<H1>Partner Legend<LINE><TEXT>"..title.."<LINE>",
-        "처치 "..tostring(kills).." / 생존 "..tostring(days).."일<LINE><LINE>",
-        "<H2>칭호<LINE>"}
+    local lines={"<H1>"..L.Text("UI_PL_WindowTitle","Partner Legend")
+            .."<LINE><TEXT>"..title.."<LINE>",
+        L.Text("UI_PL_Kills","Kills").." "..tostring(kills).." / "
+            ..L.Text("UI_PL_Survival","Survival").." "..tostring(days)
+            ..L.Text("UI_PL_DaySuffix"," days").."<LINE><LINE>",
+        "<H2>"..L.Text("UI_PL_Titles","Titles").."<LINE>"}
     for i,t in ipairs(L.TITLES) do
-        lines[#lines+1]=(d.titles[i] and "[획득] " or "[미획득] ")
-            ..t[2].." - "..tostring(L.Required("kills",t[1])).."킬<LINE>"
+        lines[#lines+1]=(d.titles[i]
+            and L.Text("UI_PL_Unlocked","[Unlocked] ")
+            or L.Text("UI_PL_Locked","[Locked] "))
+            ..L.GetTitleName(t).." - "..tostring(L.Required("kills",t[1]))
+            ..L.Text("UI_PL_KillSuffix"," kills").."<LINE>"
     end
-    lines[#lines+1]="<LINE><H2>훈장<LINE>"
+    lines[#lines+1]="<LINE><H2>"..L.Text("UI_PL_Medals","Medals").."<LINE>"
     for _,m in ipairs(L.MEDALS) do
-        local unit=m.kind=="kills" and "킬" or m.kind=="days" and "일" or "레벨"
-        lines[#lines+1]=(d.medals[m.id] and "[획득] " or "[미획득] ")
-            ..m.name.." - "..tostring(L.Required(m.kind,m.target))..unit
+        local unit=m.kind=="kills" and L.Text("UI_PL_KillSuffix"," kills")
+            or m.kind=="days" and L.Text("UI_PL_DaySuffix"," days")
+            or L.Text("UI_PL_LevelSuffix"," level")
+        lines[#lines+1]=(d.medals[m.id]
+            and L.Text("UI_PL_Unlocked","[Unlocked] ")
+            or L.Text("UI_PL_Locked","[Locked] "))
+            ..L.GetMedalName(m).." - "..tostring(L.Required(m.kind,m.target))..unit
             .." (+"..tostring(L.GetMedalBonus(m)).."%)<LINE>"
     end
-    lines[#lines+1]="<LINE>F8: 닫기 / 피해 보상은 게임 모드 설정에서 조절"
+    lines[#lines+1]="<LINE>"..L.Text("UI_PL_Footer",
+        "F8: close / Adjust damage rewards in Mod Options")
     if window then window:removeFromUIManager();window=nil end
     local panel=ISRichTextPanel:new(0,0,530,520)
     panel:initialise()
     panel.autosetheight=false
     panel.clip=true
-    window=panel:wrapInCollapsableWindow("Partner Legend",false)
+    window=panel:wrapInCollapsableWindow(L.Text("UI_PL_WindowTitle","Partner Legend"),false)
     window:setX(math.max(0,(getCore():getScreenWidth()-550)/2))
     window:setY(math.max(0,(getCore():getScreenHeight()-560)/2))
     window:addToUIManager()

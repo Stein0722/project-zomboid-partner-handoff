@@ -17,6 +17,12 @@ end
 Perks = { MAX = {}, None = {} }
 Perks.FromString = function(id) return perk(id) end
 
+local localized = {
+    UI_PL_Title_100 = "Localized Title",
+    UI_PL_Medal_days_7 = "Localized Medal",
+}
+getText = function(key) return localized[key] or key end
+
 local levels = { Axe = 20, Aiming = 20 }
 PartnerMasteryExtension = {
     GetEffectiveLevel = function(_, p) return levels[p:getId()] or 0 end,
@@ -24,9 +30,12 @@ PartnerMasteryExtension = {
 
 assert(loadfile(root .. "/patches/PartnerLegend/42/media/lua/shared/PartnerLegend/Core.lua"))()
 local L = PartnerLegend
-assert(L.VERSION == "0.1.1", "unexpected version")
+assert(L.VERSION == "0.1.2", "unexpected version")
 assert(#L.TITLES == 12, "title count changed")
 assert(#L.MEDALS == 29, "medal count changed")
+assert(L.GetTitleName(L.TITLES[1]) == "Localized Title", "title translation failed")
+assert(L.GetMedalName(L.MEDALS[1]) == "Localized Medal", "medal translation failed")
+assert(L.GetMedalName(L.MEDALS[2]) == "Hardened Survivor", "English fallback failed")
 
 local playerData = {}
 local player = {
