@@ -2,7 +2,8 @@
 
 | 패치 | 버전 | 해결한 문제 | 현재 확인 상태 | 공개 범위 |
 |---|---:|---|---|---|
-| PartnerBeyondTenSkillJournalBridge | 1.0.1 | Skill Journal이 Beyond Ten 11~15 마스터리 XP를 기록·복구 | 복제 세이브 핵심 시험 통과, 원본 미적용 | 전체 독립 코드 |
+| PartnerBeyondTenSkillJournalBridge | 1.1.0 | Skill Journal이 Beyond Ten 11~15와 선택적 16~20 마스터리 XP를 기록·복구 | 1.0.1 인게임 통과, 1.1.0 자동 시험 통과·인게임 전 | 전체 독립 코드 |
+| PartnerMasteryExtension | 0.1.0 | Beyond Ten 보너스는 15에 고정하고 16~20 XP 저장·UI 표시 | 실제 1.3.4 소스 통합 시험 통과, 인게임 전 | 전체 독립 코드 |
 | PartnerCoopZombieBuddyBridge | 1.0.0 | 협동 서버 시작 때 ZombieBuddy를 미리 연결 | 멀티 서버용 브리지로 사용 | 전체 독립 코드 |
 | PartnerDynamicWeightCompat | 2.6.0 | 최종 무게 0.01배, 실제 수납 한도 동기화, 과적 지구력 페널티 제거, MP 지도 보완 | 가방·바닥·캐릭터 이동과 피로 문제 확인 | 현재 런타임·소스 |
 | PartnerLargeMapMetaBuffer | 1.0.1 | 대형 맵 조합의 10 MiB 지도 메타데이터 버퍼 초과 | 대구 및 대형 맵용으로 사용 | 현재 런타임·소스 |
@@ -22,6 +23,9 @@
 - 현재 값보다 낮추지 않고, 같은 일기장을 반복해서 읽어 XP가 복제되지 않게 합니다.
 - Skill Journal의 회복률, 신체 스킬 제외, 캐릭터당 한 번 규칙을 따릅니다.
 - 자세한 결과는 [BEYOND_TEN_HANDOFF.md](BEYOND_TEN_HANDOFF.md)에 있습니다.
+- `PartnerMasteryExtension`은 원본 `BT.MAX_LEVEL`을 평소 15로 유지해 기존 보너스를 늘리지 않습니다.
+- 저장·표시 계산 순간에만 20레벨 용량을 사용하며 별도 Tick·좀비 검색·공격 이벤트는 없습니다.
+- 첫 0.1.0은 싱글플레이 전용이고 16~20 추가 보너스는 다음 단계로 미뤘습니다.
 
 ### 아공간과 상점
 
@@ -40,4 +44,3 @@
 - 기본 싱글 프리셋은 권총 1.55~1.60배, 5.56 1.65배, .308/7.62 1.70배, 산탄 1.40배입니다.
 - 바닐라·브리타·소음기 음량을 따로 조절하되 일반 총기의 좀비 청각 범위는 유지합니다.
 - 브리타 일체형 소음기 총기 5종의 잘못된 총성과 유인 범위를 교정합니다.
-

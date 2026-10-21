@@ -52,7 +52,12 @@ function BeyondTen.ExportXP(player)
 end
 function BeyondTen.ImportXP(player, values, _replace)
     for id, value in pairs(values) do
-        if perks[id] then player.mastery[id] = BeyondTen.Clamp(value, 0, 500) end
+        local maximum = 500
+        if type(PartnerMasteryExtension) == "table"
+            and type(PartnerMasteryExtension.GetMaximumStoredXP) == "function" then
+            maximum = PartnerMasteryExtension.GetMaximumStoredXP(perks[id])
+        end
+        if perks[id] then player.mastery[id] = BeyondTen.Clamp(value, 0, maximum) end
     end
 end
 
@@ -175,5 +180,27 @@ local serverReader = { native = { Carpentry = 10 }, mastery = { Carpentry = 0 },
 SkillJournal.restore(serverReader, item, 0.10)
 assertEqual(serverReader.mastery.Carpentry, 200, "server receives mastery target")
 assertEqual(syncCount, 1, "server sends Beyond Ten perk sync")
+
+PartnerMasteryExtension = {
+    API_VERSION = 1,
+    GetMaximumStoredXP = function(_perk) return 1000 end,
+}
+local extendedItem = { modData = {} }
+local extendedWriter = {
+    native = { Carpentry = 10 },
+    mastery = { Carpentry = 850 },
+    claimed = false,
+}
+SkillJournal.snapshot(extendedWriter, extendedItem)
+assertEqual(
+    extendedItem.modData.SkillJournal.PartnerBeyondTenSkillJournalBridge.xp.Carpentry,
+    850,
+    "optional mastery extension XP is not clamped to level 15")
+
+serverMode = false
+recoveryFraction = 1
+local extendedReader = { native = { Carpentry = 10 }, mastery = { Carpentry = 0 }, claimed = false }
+SkillJournal.restore(extendedReader, extendedItem, 0.10)
+assertEqual(extendedReader.mastery.Carpentry, 850, "extended mastery XP restores through journal")
 
 print("BRIDGE_CONTRACT_TEST_OK")

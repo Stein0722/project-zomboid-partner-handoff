@@ -24,7 +24,8 @@
 
 - 현재 원본 싱글 세이브에는 `BeyondTen`과 `PartnerBeyondTenSkillJournalBridge`가 아직 활성화되지 않았습니다.
 - 두 모드는 복제 세이브에서 15레벨 표시, 경험치 획득, 일기장 기록, 재시작 유지, 사망 후 새 캐릭터 복구, Traits As Skills 병용, 전투와 프레임을 확인했습니다.
-- `PartnerBeyondTenSkillJournalBridge` v1.0.1은 복제 테스트를 통과했지만 원본 적용 전에는 다시 백업해야 합니다.
+- `PartnerBeyondTenSkillJournalBridge` v1.0.1은 복제 세이브 인게임 시험을 통과했습니다. 선택적 16~20 XP 보존을 더한 v1.1.0은 자동 계약 시험을 통과했지만 아직 인게임 시험 전입니다.
+- `PartnerMasteryExtension` v0.1.0은 16~20레벨 XP 저장·표시만 추가하고 Beyond Ten 보너스는 15에서 멈추는 싱글플레이 베타입니다. 실제 원본 세이브에는 아직 설치하지 않았습니다.
 - 오래된 More Traits와 More Traits Definitive는 동시에 사용하지 않습니다. 현재 기준 목록은 Definitive 계열입니다.
 - Project RPG, Sleep With Friends, Viewpoint 계열은 현재 기준 목록에서 제외되어 있습니다.
 
@@ -48,4 +49,3 @@
 ## 저장소 성격과 권리
 
 이 저장소는 개인 작업 인수인계용입니다. 별도 라이선스를 부여하지 않았으며, 창작마당 원본 모드의 코드·모델·번역·자산에 대한 권리를 주장하지 않습니다. 원본 모드는 각 제작자의 창작마당 페이지에서 받아야 합니다.
-

@@ -1,0 +1,8 @@
+name=Partner Mastery Extension - Level 20 Storage Beta
+id=PartnerMasteryExtension
+description=Single-player companion for Beyond Ten 1.3.4. Stores and displays levels 16-20 without extending level 15 mastery bonuses.
+authors=Partner
+modversion=0.1.0
+versionMin=42.21
+versionMax=42.21
+require=BeyondTen

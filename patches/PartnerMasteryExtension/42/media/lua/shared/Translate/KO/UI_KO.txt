@@ -1,0 +1,4 @@
+UI_KO = {
+    UI_PME_Mastery = "파트너 숙련",
+    UI_PME_StorageOnly = "16~20레벨은 XP만 저장하며, Beyond Ten 보너스는 15레벨에서 멈춥니다.",
+}

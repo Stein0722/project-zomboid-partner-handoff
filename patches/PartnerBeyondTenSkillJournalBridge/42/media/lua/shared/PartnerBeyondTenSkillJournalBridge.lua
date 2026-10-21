@@ -5,7 +5,7 @@ PartnerBeyondTenSkillJournalBridge = PartnerBeyondTenSkillJournalBridge or {}
 local Bridge = PartnerBeyondTenSkillJournalBridge
 local BT = BeyondTen
 
-Bridge.VERSION = "1.0.1"
+Bridge.VERSION = "1.1.0"
 Bridge.DATA_KEY = "PartnerBeyondTenSkillJournalBridge"
 Bridge.SCHEMA_VERSION = 1
 
@@ -33,10 +33,22 @@ local function allowedPerk(perkID)
     return perk
 end
 
+local function maximumStoredXP(perk)
+    local extension = PartnerMasteryExtension
+    if type(extension) == "table"
+        and tonumber(extension.API_VERSION) == 1
+        and type(extension.GetMaximumStoredXP) == "function" then
+        local ok, value = pcall(extension.GetMaximumStoredXP, perk)
+        value = ok and finiteNumber(value) or nil
+        if value and value > 0 then return value end
+    end
+    return BT.GetTotalMasteryCost(perk, BT.MAX_LEVEL)
+end
+
 local function sanitizedXP(perk, value)
     value = finiteNumber(value)
     if value == nil or value <= 0 then return nil end
-    local maximum = BT.GetTotalMasteryCost(perk, BT.MAX_LEVEL)
+    local maximum = maximumStoredXP(perk)
     return BT.Clamp(value, 0, maximum)
 end
 
@@ -289,4 +301,3 @@ local function install()
 end
 
 install()
-

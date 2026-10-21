@@ -1,7 +1,8 @@
-Partner Beyond Ten - Skill Journal Bridge 1.0.1
+Partner Beyond Ten - Skill Journal Bridge 1.1.0
 
 목적
 - Skill Journal 일기장에 Beyond Ten의 레벨 11~15 마스터리 XP를 함께 기록합니다.
+- Partner Mastery Extension이 함께 있으면 16~20레벨 XP도 같은 기록에 보존합니다.
 - Workshop 원본 파일은 수정하거나 포함하지 않습니다.
 - Beyond Ten과 Skill Journal이 공개한 함수만 연결합니다.
 
@@ -19,6 +20,10 @@ Partner Beyond Ten - Skill Journal Bridge 1.0.1
 - Skill Journal (SkillJournal) 1.2.2
 - Project Zomboid 42.21
 
+선택 모드
+- PartnerMasteryExtension 0.1.0 / API 1
+- 없으면 기존 11~15레벨 브리지와 똑같이 작동합니다.
+
 시험 순서
 1. 반드시 복제 세이브에서 BeyondTen, SkillJournal, PartnerBeyondTenSkillJournalBridge를 켭니다.
 2. 스킬 하나를 레벨 10으로 만든 뒤 Beyond Ten 마스터리 XP를 얻습니다.
@@ -26,4 +31,3 @@ Partner Beyond Ten - Skill Journal Bridge 1.0.1
 4. 새 캐릭터가 같은 일기장을 읽어 레벨 10과 마스터리 XP가 복구되는지 봅니다.
 5. 같은 일기장을 다시 읽어 XP가 더 늘지 않는지 확인합니다.
 6. console.txt에서 PartnerBeyondTenSkillJournalBridge 오류가 없는지 확인합니다.
-

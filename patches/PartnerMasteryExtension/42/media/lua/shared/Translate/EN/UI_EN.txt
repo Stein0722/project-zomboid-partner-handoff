@@ -1,0 +1,4 @@
+UI_EN = {
+    UI_PME_Mastery = "Partner Mastery",
+    UI_PME_StorageOnly = "Levels 16-20 store XP only; Beyond Ten bonuses remain capped at level 15.",
+}
