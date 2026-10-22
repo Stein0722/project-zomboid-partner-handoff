@@ -191,4 +191,13 @@ assert(ranged.hits==3 and ranged.piercing==true, "20 aiming must add +2 and enab
 L.RestoreWeapon(ranged)
 assert(ranged.hits==1 and ranged.piercing==false, "ranged state should restore")
 
+
+-- A vanilla rifle with unconfigured MaxHitcount may report the 1000 default.
+ranged.hits=1000
+ranged.piercing=false
+L.ApplySkillHitBonus(damagePlayer,ranged)
+assert(ranged.hits==3 and ranged.piercing, "default 1000 must normalize to three total targets")
+L.RestoreWeapon(ranged)
+assert(ranged.hits==1000 and not ranged.piercing, "default cap must restore exactly")
+
 print("Partner Legend contract test passed")
