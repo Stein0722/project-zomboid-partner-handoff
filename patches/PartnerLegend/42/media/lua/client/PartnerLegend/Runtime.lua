@@ -35,6 +35,18 @@ end
 local function restore(item)
     if not isWeapon(item) then return end
     local md=safeGet(item,"getModData")
+    local hits=md and md.PartnerLegendHits
+    if type(hits)=="table" then
+        local current=tonumber(safeGet(item,"getMaxHitCount"))
+        if closeEnough(current,tonumber(hits.applied)) then
+            safeCall(item,"setMaxHitCount",hits.base)
+        end
+        local piercing=safeGet(item,"isPiercingBullets")
+        if piercing==hits.appliedPiercing then
+            safeCall(item,"setPiercingBullets",hits.basePiercing)
+        end
+        md.PartnerLegendHits=nil
+    end
     local saved=md and md.PartnerLegendDamage
     if type(saved)~="table" then return end
     local lo=tonumber(safeGet(item,"getMinDamage"))
@@ -54,6 +66,43 @@ local function weaponPerk(item)
     local id=safeGet(perk,"getId")
     return id and tostring(id) or nil
 end
+local function applySkillHitBonus(player,item)
+    if not player or not isWeapon(item) then return end
+    local ranged=safeGet(item,"isRanged")==true
+    local skillID=ranged and "Aiming" or weaponPerk(item)
+    if not ranged and not skillID then return end
+    -- All six native melee categories and single-projectile firearms only.
+    if not ranged then
+        local allowed=false
+        for _,definition in ipairs(L.MELEE_PERKS) do
+            if definition[1]==skillID then allowed=true;break end
+        end
+        if not allowed then return end
+    else
+        local projectiles=tonumber(safeGet(item,"getProjectileCount")) or 1
+        if projectiles>1 then return end -- no shotgun pellet multiplication
+    end
+    local level=L.SkillLevel(player,skillID)
+    local extra=(level>=10 and 1 or 0)+(level>=20 and 1 or 0)
+    if extra==0 then return end
+    local base=tonumber(safeGet(item,"getMaxHitCount"))
+    if not base or base<1 or base>12 then return end
+    local md=safeGet(item,"getModData")
+    if type(md)~="table" then return end
+    local oldPiercing=safeGet(item,"isPiercingBullets")==true
+    local newPiercing=ranged and true or oldPiercing
+    local applied=base+extra
+    if not safeCall(item,"setMaxHitCount",applied) then return end
+    if ranged and not safeCall(item,"setPiercingBullets",newPiercing) then
+        safeCall(item,"setMaxHitCount",base)
+        return
+    end
+    md.PartnerLegendHits={
+        base=base,applied=applied,
+        basePiercing=oldPiercing,appliedPiercing=newPiercing
+    }
+end
+
 local function apply(player,item)
     if not player or not isWeapon(item) then return end
     restore(item)
@@ -86,6 +135,7 @@ function L.Refresh(player)
     if lastWeapon and lastWeapon~=equipped then restore(lastWeapon) end
     lastWeapon=equipped
     apply(player,equipped)
+    applySkillHitBonus(player,equipped)
 end
 local function player()
     return getSpecificPlayer and getSpecificPlayer(0) or nil
@@ -111,6 +161,7 @@ Events.OnEquipPrimary.Add(function(character,item)
     if lastWeapon and lastWeapon~=item then restore(lastWeapon) end
     lastWeapon=item
     apply(character,item)
+    applySkillHitBonus(character,item)
 end)
 if Events.OnPlayerDeath then
     Events.OnPlayerDeath.Add(function(character)
@@ -124,4 +175,5 @@ end
 -- Small public hooks for compatibility checks and automated contract tests.
 L.RestoreWeapon=restore
 L.ApplyWeaponBonus=apply
+L.ApplySkillHitBonus=applySkillHitBonus
 L.ReadRawMaxDamage=rawMaxDamage
