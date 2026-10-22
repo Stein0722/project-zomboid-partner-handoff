@@ -1,6 +1,7 @@
 require "PartnerLegend/Core"
 local L=PartnerLegend
 local lastWeapon
+local lastSkillTier=nil
 local function safeCall(target,methodName,...)
     if not target then return false,nil end
     local okMethod,method=pcall(function() return target[methodName] end)
@@ -149,12 +150,22 @@ end
 local function player()
     return getSpecificPlayer and getSpecificPlayer(0) or nil
 end
+local function selectedSkillTier(p,item)
+    if not isWeapon(item) then return 0 end
+    local ranged=safeGet(item,"isRanged")==true
+    local perkID=ranged and "Aiming" or weaponPerk(item)
+    if not perkID then return 0 end
+    local level=L.SkillLevel(p,perkID)
+    return level>=20 and 2 or level>=10 and 1 or 0
+end
 local function minute()
     local p=player()
     if not p then return end
     local new=L.Check(p)
     local equipped=p:getPrimaryHandItem()
-    if new>0 or equipped~=lastWeapon then L.Refresh(p) end
+    local tier=selectedSkillTier(p,equipped)
+    if new>0 or equipped~=lastWeapon or tier~=lastSkillTier then L.Refresh(p) end
+    lastSkillTier=tier
     if new>0 and HaloTextHelper and HaloTextHelper.addText then
         HaloTextHelper.addText(p,"Partner Legend: +"..tostring(new)
             ..L.Text("UI_PL_Halo_Achievements"," achievements"))
