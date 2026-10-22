@@ -59,7 +59,13 @@ local function paint()
     if buttons.aura then buttons.aura:setEnable(unlocked) end
 end
 local function addButton(id,x,y,w,text,handler)
-    local b=ISButton:new(x,y,w,25,text,panel,function() handler();paint() end)
+    local b=ISButton:new(x,y,w,25,text,panel,function()
+        handler()
+        if L.AuraRenderer and L.AuraRenderer.Refresh then
+            L.AuraRenderer.Refresh()
+        end
+        paint()
+    end)
     b:initialise()
     panel:addChild(b)
     buttons[id]=b

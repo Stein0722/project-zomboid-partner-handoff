@@ -2,6 +2,6 @@ name=Partner Legend - Title Manager
 id=PartnerLegend
 description=Lightweight solo title manager, achievement state and legacy weapon bonuses, B42.21.
 authors=Partner
-modversion=0.2.0
+modversion=0.2.1
 versionMin=42.21
 versionMax=42.21
