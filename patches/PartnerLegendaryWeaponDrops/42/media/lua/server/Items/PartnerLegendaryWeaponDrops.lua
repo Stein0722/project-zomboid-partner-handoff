@@ -143,21 +143,22 @@ local function onFillContainer(roomName, containerType, container)
 
     local denominator = math.floor(tonumber(cfg.ContainerChanceDenominator) or 10000)
     if denominator < 1 then denominator = 1 end
-    if ZombRand(denominator) ~= 0 then return end
-
     if not availablePool then rebuildAvailablePool() end
     if #availablePool == 0 then return end
 
-    local fullType = availablePool[ZombRand(#availablePool) + 1]
-    local item = container:AddItem(fullType)
-    if item then
-        print(string.format(
-            "[PartnerLegendaryDrops] Rare find: %s (room=%s, container=%s, 1/%d)",
-            fullType,
-            tostring(roomName),
-            tostring(containerType),
-            denominator
-        ))
+    -- Independent 1/N Bernoulli draw per available weapon type, per
+    -- newly filled container. Multiple distinct legends may spawn together.
+    -- No per-frame updates, zombie searches, or extra distribution passes.
+    for _, fullType in ipairs(availablePool) do
+        if ZombRand(denominator) == 0 then
+            local item = container:AddItem(fullType)
+            if item then
+                print(string.format(
+                    "[PartnerLegendaryDrops] Rare find: %s (room=%s, container=%s, each 1/%d)",
+                    fullType, tostring(roomName), tostring(containerType), denominator
+                ))
+            end
+        end
     end
 end
 
