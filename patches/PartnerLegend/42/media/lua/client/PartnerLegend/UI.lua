@@ -26,7 +26,7 @@ local function paint()
     local equipped,equippedIndex=L.BestTitle(p)
     local state=unlocked and label("Unlocked","Unlocked") or label("Locked","Locked")
     local rows={
-        "<H1>"..label("WindowTitle","Partner Legend").."<LINE><LINE>",
+        "<LINE><LINE><LINE><H1>"..label("WindowTitle","Partner Legend").."<LINE><LINE>",
         label("Kills","Kills")..": "..tostring(kills).." / "..label("Survival","Survival")..": "..tostring(days).."<LINE>",
         label("Equipped","Equipped")..": "..equipped.."<LINE><LINE>",
         "<H2>"..label("Selected","Selected").."  "..selected.." / "..#L.TITLES.."<LINE>",
