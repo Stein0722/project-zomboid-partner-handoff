@@ -1,9 +1,9 @@
 Sandbox_EN = {
     Sandbox_PartnerLegendaryDrops = "Partner Extreme-Rare Legendary Weapons",
     Sandbox_PartnerLegendaryDrops_Enabled = "Enable extreme-rare container drops",
-    Sandbox_PartnerLegendaryDrops_Enabled_tooltip = "Newly generated containers can contain one weapon from Excalibar, Xixi, or Final Fantasy Weapons at an extremely low chance.",
-    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominator = "Container drop denominator",
-    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominator_tooltip = "The default 10000 means one chance in 10000 per container. Higher numbers are rarer. A successful roll creates exactly one random weapon.",
+    Sandbox_PartnerLegendaryDrops_Enabled_tooltip = "Each eligible legendary weapon from Excalibar, Xixi, Final Fantasy and optional weapon packs independently rolls a very low chance in each newly filled container.",
+    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominator = "Per-weapon container drop denominator",
+    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominator_tooltip = "The default 10000 gives each weapon type an independent 1-in-10000 roll per filled container. With 89 valid types, at least one appears with about 0.886% probability; multiple types may spawn together.",
     Sandbox_PartnerLegendaryDrops_SuppressOriginalSources = "Suppress original mod acquisition sources",
     Sandbox_PartnerLegendaryDrops_SuppressOriginalSources_tooltip = "Disables Excalibar fixed and attached-zombie spawns plus Final Fantasy zombie drops and kill rewards, leaving only this extreme-rare container system.",
 }
