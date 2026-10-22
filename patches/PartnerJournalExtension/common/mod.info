@@ -1,0 +1,7 @@
+name=Partner Journal Extension
+id=PartnerJournalExtension
+description=Add Partner Legend medals inside Daily Report Journal's medal tab; no duplicate F8 medals.
+authors=Partner
+modversion=0.1.0
+versionMin=42.21
+versionMax=42.21

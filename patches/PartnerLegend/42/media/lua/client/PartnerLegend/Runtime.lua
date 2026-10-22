@@ -1,6 +1,7 @@
 require "PartnerLegend/Core"
 local L=PartnerLegend
 local lastWeapon
+local lastSkillTier=nil
 local function safeCall(target,methodName,...)
     if not target then return false,nil end
     local okMethod,method=pcall(function() return target[methodName] end)
@@ -35,6 +36,18 @@ end
 local function restore(item)
     if not isWeapon(item) then return end
     local md=safeGet(item,"getModData")
+    local hits=md and md.PartnerLegendHits
+    if type(hits)=="table" then
+        local current=tonumber(safeGet(item,"getMaxHitCount"))
+        if closeEnough(current,tonumber(hits.applied)) then
+            safeCall(item,"setMaxHitCount",hits.base)
+        end
+        local piercing=safeGet(item,"isPiercingBullets")
+        if piercing==hits.appliedPiercing then
+            safeCall(item,"setPiercingBullets",hits.basePiercing)
+        end
+        md.PartnerLegendHits=nil
+    end
     local saved=md and md.PartnerLegendDamage
     if type(saved)~="table" then return end
     local lo=tonumber(safeGet(item,"getMinDamage"))
@@ -54,6 +67,52 @@ local function weaponPerk(item)
     local id=safeGet(perk,"getId")
     return id and tostring(id) or nil
 end
+local function applySkillHitBonus(player,item)
+    if not player or not isWeapon(item) then return end
+    local ranged=safeGet(item,"isRanged")==true
+    local skillID=ranged and "Aiming" or weaponPerk(item)
+    if not ranged and not skillID then return end
+    -- All six native melee categories and single-projectile firearms only.
+    if not ranged then
+        local allowed=false
+        for _,definition in ipairs(L.MELEE_PERKS) do
+            if definition[1]==skillID then allowed=true;break end
+        end
+        if not allowed then return end
+    else
+        local projectiles=tonumber(safeGet(item,"getProjectileCount")) or 1
+        if projectiles>1 then return end -- no shotgun pellet multiplication
+    end
+    local level=L.SkillLevel(player,skillID)
+    local extra=(level>=10 and 1 or 0)+(level>=20 and 1 or 0)
+    if extra==0 then return end
+    local base=tonumber(safeGet(item,"getMaxHitCount"))
+    if not base or base<1 then return end
+    local md=safeGet(item,"getModData")
+    if type(md)~="table" then return end
+    local oldPiercing=safeGet(item,"isPiercingBullets")==true
+    local newPiercing=ranged and true or oldPiercing
+    local effectiveBase=base
+    if base>12 then
+        -- In B42 an absent MaxHitcount often defaults to 1000. Enabling
+        -- piercing on such a gun without normalization would be disastrous.
+        -- Interpret non-piercing single-shot rifles as one starting target,
+        -- but preserve the original 1000 exactly in ModData for restoration.
+        if not ranged or oldPiercing then return end
+        effectiveBase=1
+    end
+    local applied=effectiveBase+extra
+    if not safeCall(item,"setMaxHitCount",applied) then return end
+    if ranged and not safeCall(item,"setPiercingBullets",newPiercing) then
+        safeCall(item,"setMaxHitCount",base)
+        return
+    end
+    md.PartnerLegendHits={
+        base=base,applied=applied,
+        basePiercing=oldPiercing,appliedPiercing=newPiercing
+    }
+end
+
 local function apply(player,item)
     if not player or not isWeapon(item) then return end
     restore(item)
@@ -86,16 +145,27 @@ function L.Refresh(player)
     if lastWeapon and lastWeapon~=equipped then restore(lastWeapon) end
     lastWeapon=equipped
     apply(player,equipped)
+    applySkillHitBonus(player,equipped)
 end
 local function player()
     return getSpecificPlayer and getSpecificPlayer(0) or nil
+end
+local function selectedSkillTier(p,item)
+    if not isWeapon(item) then return 0 end
+    local ranged=safeGet(item,"isRanged")==true
+    local perkID=ranged and "Aiming" or weaponPerk(item)
+    if not perkID then return 0 end
+    local level=L.SkillLevel(p,perkID)
+    return level>=20 and 2 or level>=10 and 1 or 0
 end
 local function minute()
     local p=player()
     if not p then return end
     local new=L.Check(p)
     local equipped=p:getPrimaryHandItem()
-    if new>0 or equipped~=lastWeapon then L.Refresh(p) end
+    local tier=selectedSkillTier(p,equipped)
+    if new>0 or equipped~=lastWeapon or tier~=lastSkillTier then L.Refresh(p) end
+    lastSkillTier=tier
     if new>0 and HaloTextHelper and HaloTextHelper.addText then
         HaloTextHelper.addText(p,"Partner Legend: +"..tostring(new)
             ..L.Text("UI_PL_Halo_Achievements"," achievements"))
@@ -111,6 +181,7 @@ Events.OnEquipPrimary.Add(function(character,item)
     if lastWeapon and lastWeapon~=item then restore(lastWeapon) end
     lastWeapon=item
     apply(character,item)
+    applySkillHitBonus(character,item)
 end)
 if Events.OnPlayerDeath then
     Events.OnPlayerDeath.Add(function(character)
@@ -124,4 +195,5 @@ end
 -- Small public hooks for compatibility checks and automated contract tests.
 L.RestoreWeapon=restore
 L.ApplyWeaponBonus=apply
+L.ApplySkillHitBonus=applySkillHitBonus
 L.ReadRawMaxDamage=rawMaxDamage

@@ -8,11 +8,10 @@ local PERSONAL_WALLET_VERSION_KEY = "PartnerMSRPersonalWalletVersion"
 local PERSONAL_WALLET_VERSION = 1
 local ORIGINAL_SHARED_WALLET_TABLE = "MSR_ShopSharedWallet"
 local ORIGINAL_SHARED_BALANCE_KEY = "MSR_MagicalCoreBalance"
-local PURCHASE_PRICE_MULTIPLIER = 1.5
+local PURCHASE_PRICE_MULTIPLIER = 2.0
 
 -- Skill Book Expansion uses the same five-book slipcase system as B42 vanilla.
--- These entries are added after the 1.5x pass, so 150 is the exact final price
--- and matches the shop's existing 100-core book sets after that pass.
+-- Custom products have explicit final costs for the 2x economy.
 local EXPANDED_SKILL_BOOK_SETS = {
     { id = "axe", name = "UI_Shop_BookAxeSet", item = "SkillBookExpansionB42.BookAxeSet" },
     { id = "blunt", name = "UI_Shop_BookBluntSet", item = "SkillBookExpansionB42.BookBluntSet" },
@@ -441,6 +440,17 @@ local function getMigrationSeed()
     return math.max(0, math.floor(tonumber(state.personalWalletSeed) or 0))
 end
 
+-- Trait reshaping is a separate shop currency path, not a normal catalog purchase.
+-- Apply the new 200-cores-per-point rate on both client and authoritative host.
+local function installTraitEconomyPatch()
+    pcall(require, "MSR_ReshapeData")
+    if MSR and MSR.ReshapeData then
+        MSR.ReshapeData.CORE_PER_TRAIT_POINT = 200
+        return true
+    end
+    return false
+end
+
 local function installPersonalWalletPatch()
     if not MSR or not MSR.ShopData then return false end
     local ShopData = MSR.ShopData
@@ -680,7 +690,7 @@ local function installShopCatalogPatch()
                 bookSet.name .. "_Desc",
                 "Item_BookSlipcase",
                 "books",
-                150,
+                200,
                 {
                     { type = bookSet.item, count = 1 },
                 }
@@ -695,7 +705,7 @@ local function installShopCatalogPatch()
             "UI_Shop_PartnerLegendaryWeaponDraw_Desc",
             "Item_Katana",
             "weapons",
-            5000,
+            10000,
             {
                 { type = "Base.PartnerLegendaryDrawToken", count = 1 },
             }
@@ -708,7 +718,7 @@ local function installShopCatalogPatch()
             "UI_Shop_PartnerRepairAllWeapons_Desc",
             "Item_DuctTape",
             "weapons",
-            2000,
+            4000,
             {
                 { type = "Base.PartnerRepairWeaponsToken", count = 1 },
             }
@@ -722,7 +732,7 @@ local function installShopCatalogPatch()
             "UI_Shop_RespiratorStarterKit_Desc",
             "Item_Respirator_wFilter",
             "medical",
-            100,
+            200,
             {
                 { type = "Base.Hat_BuildersRespirator_nofilter", count = 1 },
                 { type = "Base.RespiratorFilters", count = 4 },
@@ -736,7 +746,7 @@ local function installShopCatalogPatch()
             "UI_Shop_RespiratorFilterPack_Desc",
             "Item_AirFilters",
             "medical",
-            60,
+            120,
             {
                 { type = "Base.RespiratorFilters", count = 5 },
             }
@@ -778,6 +788,7 @@ local function installShopCatalogPatch()
 end
 
 local function installAll()
+    installTraitEconomyPatch()
     local refugeReady = installSharedRefugePatch()
     local walletReady = installPersonalWalletPatch()
     local broadcastReady = installSharedUpgradeBroadcast()

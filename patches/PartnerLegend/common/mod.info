@@ -1,7 +1,7 @@
-name=Partner Legend - Titles and Medals
+name=Partner Legend - Title Manager
 id=PartnerLegend
-description=Lightweight solo titles, medals and adjustable weapon-damage bonuses, B42.21.
+description=Lightweight solo title manager, achievement state and legacy weapon bonuses, B42.21.
 authors=Partner
-modversion=0.1.2
+modversion=0.2.1
 versionMin=42.21
 versionMax=42.21
