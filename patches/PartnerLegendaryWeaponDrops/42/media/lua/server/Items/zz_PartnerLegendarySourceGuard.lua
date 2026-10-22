@@ -51,11 +51,12 @@ local completed=false
 local function run()
     if completed or not enabled() then return end
     -- These tables were populated by the source mod's distribution scripts.
-    local roots={
-        ProceduralDistributions and ProceduralDistributions.list,
-        SuburbsDistributions,
-        VehicleDistributions,
-    }
+    local roots={}
+    if ProceduralDistributions and ProceduralDistributions.list then
+        roots[#roots+1]=ProceduralDistributions.list
+    end
+    if SuburbsDistributions then roots[#roots+1]=SuburbsDistributions end
+    if VehicleDistributions then roots[#roots+1]=VehicleDistributions end
     local visited,removed={},0
     for _,root in ipairs(roots) do
         removed=removed+removeAllOriginalLoot(root,visited)
