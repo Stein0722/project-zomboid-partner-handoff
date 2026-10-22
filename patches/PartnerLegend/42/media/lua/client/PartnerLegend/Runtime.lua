@@ -86,12 +86,21 @@ local function applySkillHitBonus(player,item)
     local extra=(level>=10 and 1 or 0)+(level>=20 and 1 or 0)
     if extra==0 then return end
     local base=tonumber(safeGet(item,"getMaxHitCount"))
-    if not base or base<1 or base>12 then return end
+    if not base or base<1 then return end
     local md=safeGet(item,"getModData")
     if type(md)~="table" then return end
     local oldPiercing=safeGet(item,"isPiercingBullets")==true
     local newPiercing=ranged and true or oldPiercing
-    local applied=base+extra
+    local effectiveBase=base
+    if base>12 then
+        -- In B42 an absent MaxHitcount often defaults to 1000. Enabling
+        -- piercing on such a gun without normalization would be disastrous.
+        -- Interpret non-piercing single-shot rifles as one starting target,
+        -- but preserve the original 1000 exactly in ModData for restoration.
+        if not ranged or oldPiercing then return end
+        effectiveBase=1
+    end
+    local applied=effectiveBase+extra
     if not safeCall(item,"setMaxHitCount",applied) then return end
     if ranged and not safeCall(item,"setPiercingBullets",newPiercing) then
         safeCall(item,"setMaxHitCount",base)
