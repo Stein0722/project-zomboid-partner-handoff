@@ -38,7 +38,7 @@ local function sameNumber(a, b)
     return a ~= nil and b ~= nil and math.abs(a - b) < 0.001
 end
 
-local function tuneWeapon(item)
+local function tuneWeapon(item, report)
     local kind = PLB.GetRangedClass and PLB.GetRangedClass(item) or nil
     if not kind then
         return false
@@ -83,6 +83,17 @@ local function tuneWeapon(item)
         targetPiercing = targetPiercing,
         category = kind,
     }
+    if report then
+        print(string.format(
+            "[PartnerLightweightBallistics] equipped %s: class=%s, baseMaxHit=%d, bonus=%d, finalMaxHit=%d, piercing=%s.",
+            tostring(safe(item, "getFullType") or "unknown"),
+            tostring(kind),
+            math.floor(baseCount),
+            extra,
+            math.floor(targetCount),
+            tostring(targetPiercing)
+        ))
+    end
     return true
 end
 
@@ -109,7 +120,7 @@ if type(beforeInventory) == "function" then
             local changed = 0
             for i = 0, count - 1 do
                 local obj = items:get(i)
-                if tuneWeapon(obj) then
+                if tuneWeapon(obj, false) then
                     changed = changed + 1
                 end
                 local child = safe(obj, "getInventory")
@@ -130,5 +141,5 @@ end
 
 -- Registered after the original handlers: preset tuning runs first, then this
 -- independent class bonus. It therefore works in every preset.
-Events.OnEquipPrimary.Add(function(_, item) tuneWeapon(item) end)
-Events.OnEquipSecondary.Add(function(_, item) tuneWeapon(item) end)
+Events.OnEquipPrimary.Add(function(_, item) tuneWeapon(item, true) end)
+Events.OnEquipSecondary.Add(function(_, item) tuneWeapon(item, true) end)

@@ -1,8 +1,8 @@
--- Partner Lightweight Realistic Ballistics v1.2.0
+-- Partner Lightweight Realistic Ballistics v1.2.1
 --
 -- Performance contract:
 --   * no OnTick callback
---   * no per-shot callback
+--   * one bounded local-square check on a successful shotgun hit only
 --   * no zombie/world scan
 --   * no custom projectile object
 --
@@ -757,7 +757,7 @@ function PLB.ApplyDefinitions()
     -- failures. Live weapon instances are patched on player creation, inventory
     -- refresh and equip, which is the point at which their combat stats matter.
     print(string.format(
-        "%s v1.2.0 preset %d: instance patch mode ready. No definition failures, Tick or per-shot hooks.",
+        "%s v1.2.1 preset %d: instance patch mode ready. No definition failures or Tick hooks.",
         MOD_TAG, PLB.Settings.preset
     ))
     return 0, 0
