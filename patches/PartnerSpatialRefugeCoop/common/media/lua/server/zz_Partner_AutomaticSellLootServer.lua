@@ -144,8 +144,7 @@ end
 
 local function showPickupFeedback(player, count)
     if count <= 0 or not HaloTextHelper then return end
-    local template = getText("UI_PartnerAutoLootPickup") or "Auto loot +%d"
-    local text = string.format(template, count)
+    local text = getText("UI_PartnerAutoLootPickup", count) or ("Auto loot +" .. tostring(count))
     HaloTextHelper.addText(player, "[col=137,232,148]" .. text .. "[/]", "[br/]")
 end
 

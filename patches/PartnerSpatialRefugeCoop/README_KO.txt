@@ -1,4 +1,4 @@
-Partner Shared Spatial Refuge + Personal Wallet 1.8.4
+Partner Shared Spatial Refuge + Personal Wallet 1.9.1
 
 기능
 - 협동 서버의 모든 플레이어가 첫 번째로 만들어진 아공간 하나를 함께 사용합니다.
@@ -77,4 +77,12 @@ v1.8.3
 
 v1.8.4
 - B42 Kahlua 환경에서 판매 품목 분류 중 next() 호출 오류로 시체 자동 줍기가 멈추던 문제 수정
+
+v1.9.0
+- 자동 줍기 알림의 번역 인자를 게임 번역기에 직접 전달하여 문자열 형식 경고를 막았습니다.
+
+v1.9.1
+- My Spatial Refuge B42.21의 `MSR.Basement` API를 상점 확장 모드가 요구하는 예전 `MSR_BasementGeneration` 이름으로 안전하게 연결합니다.
+- 최신 로그에서 지하실 확장 모듈 로딩은 확인했습니다.
+- 실제 지하실의 실내 판정은 지하실 업그레이드 설치 후 별도로 확인해야 합니다.
 
