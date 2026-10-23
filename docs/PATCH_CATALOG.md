@@ -9,9 +9,9 @@
 | PartnerLargeMapMetaBuffer | 1.0.1 | 대형 맵 조합의 10 MiB 지도 메타데이터 버퍼 초과 | 대구 및 대형 맵용으로 사용 | 현재 런타임·소스 |
 | PartnerLegendaryWeaponDrops | 1.0.0 | 3개 무기 모드 완성품을 보관함 기준 1/10,000로 드랍 | 로드·설정 구성 확인 | 전체 독립 코드 |
 | PartnerLightweightBallistics | 1.1.3 | 바닐라·브리타 화력/역할, 총성 체감 음량, 일체형 소음기 오류 | 피해량·음량 인게임 확인 | 전체 독립 코드 |
-| PartnerSpatialRefugeCoop | 1.8.4 | 공용 아공간·공용 업그레이드·개인 지갑, 상점/우물/자동 줍기 확장 | 주요 업그레이드·상점·필터·자동 줍기 수정 확인 | Partner 스크립트만, 번역/원본 자산 제외 |
+| PartnerSpatialRefugeCoop | 1.9.1 | 공용 아공간·공용 업그레이드·개인 지갑, 상점/우물/자동 줍기 및 지하실 API 호환 | 주요 기능 확인, 지하실 모듈 로딩 확인·실내 판정 대기 | Partner 스크립트만, 번역/원본 자산 제외 |
 | PartnerVSGirlAllFemaleBridge | 1.0.0 | 대용량 All-female 자산 없이 새 좀비를 여성으로 생성 | 현재 기준 목록에 활성 | 전체 독립 코드 |
-| PartnerVSGirlRenderGuard | 1.0.0 | VSGirl 착용 목록 경쟁 상태의 렌더 스레드 충돌 방지 | 회색 의상/오류 대응 뒤 활성 | 현재 런타임·소스 |
+| PartnerVSGirlRenderGuard | 1.0.1 | VSGirl 착용 목록 경쟁 상태의 렌더 스레드 충돌 및 피복 계산 예외 방지 | 보호 패치 4개 로딩·최신 로그 무재발 확인 | 현재 런타임·소스 |
 | PartnerBritaArmorB42Compat | 1.0.0 | Brita Armor 1.4.9의 `getFullName` nil 검증 충돌 우회 | 지정 버전에서 사용 | 설명만, 파생 스크립트 제외 |
 | PartnerFantasyWorkshopCat71Fix | 1.0.0 | `clothes_cat71_L` 모델명 불일치로 회색 의상 표시 | 해당 의상 모델 오류 대응 | 설명만, 원본 FBX 별칭 제외 |
 
@@ -39,6 +39,7 @@
 - 기술서 11종, 5,000코어 중복 없는 전설 무기 뽑기, 2,000코어 전체 무기 수리를 추가했습니다.
 - 우물은 3단계로 50/200/1,000 L 일일 생산과 500/1,500/3,000 L 저장량을 사용합니다.
 - 자동 줍기는 5단계까지이며 4단계 500코어, 5단계 1,000코어입니다. 판매 품목별 ON/OFF가 가능합니다.
+- B42.21의 `MSR.Basement`를 상점 확장의 예전 지하실 모듈 이름에 연결합니다. 모듈 로딩은 확인했지만 실제 실내 판정은 업그레이드 설치 후 검증해야 합니다.
 
 ### 경량 탄도
 

@@ -175,7 +175,7 @@
 | 166 | `BritasArmorPackB42` | Brita's Armor Pack B42.20 \| 贝雷塔护甲全修复版 | Steam Workshop | [3780298456](https://steamcommunity.com/sharedfiles/filedetails/?id=3780298456) | 1.4.9 |
 | 167 | `myspatialrefuge` | My Spatial Refuge | Steam Workshop | [3632195933](https://steamcommunity.com/sharedfiles/filedetails/?id=3632195933) | 1.27.1 |
 | 168 | `myspatialrefuge_shop` | Shop Extension | Steam Workshop | [3711250417](https://steamcommunity.com/sharedfiles/filedetails/?id=3711250417) |  |
-| 169 | `PartnerSpatialRefugeCoop` | Partner Shared Spatial Refuge + Personal Wallet | Local Partner patch |  | 1.8.4 |
+| 169 | `PartnerSpatialRefugeCoop` | Partner Shared Spatial Refuge + Personal Wallet | Local Partner patch |  | 1.9.1 |
 | 170 | `BritaCombinedB42` | Brita Weapon and Armor B42 Unified Compatibility Port | Steam Workshop | [3777433827](https://steamcommunity.com/sharedfiles/filedetails/?id=3777433827) |  |
 | 171 | `AutoReload` | Auto Reload | Steam Workshop | [3389448389](https://steamcommunity.com/sharedfiles/filedetails/?id=3389448389) | 1.3 |
 | 172 | `ReloadAllAmmo` | ReloadAllAmmo [SP/MP] | Steam Workshop | [3774932027](https://steamcommunity.com/sharedfiles/filedetails/?id=3774932027) | 1.5 |
@@ -189,7 +189,7 @@
 | 180 | `Daegutest` | Daegutest | Steam Workshop | [3820861712](https://steamcommunity.com/sharedfiles/filedetails/?id=3820861712) |  |
 | 181 | `TombBodyCompat` | Tomb's Player Body - [Compatibility - Vanilla+] | Steam Workshop | [3431734923](https://steamcommunity.com/sharedfiles/filedetails/?id=3431734923) |  |
 | 182 | `VSGirlBodyExtension` | VSGirlBodyExtension | Steam Workshop | [3820897273](https://steamcommunity.com/sharedfiles/filedetails/?id=3820897273) | 1.19.27 |
-| 183 | `PartnerVSGirlRenderGuard` | Partner VSGirl Render Guard | Local Partner patch |  | 1.0.0 |
+| 183 | `PartnerVSGirlRenderGuard` | Partner VSGirl Render Guard | Local Partner patch |  | 1.0.1 |
 | 184 | `VSGirlBodyExtensionClothingCompatibility` | VSGirlBodyExtension - Clothing Compatibility Patch | Local external mod |  | 1.0.2 |
 | 185 | `PartnerVSGirlAllFemaleBridge` | Partner VSGirl All-Female Zombie Bridge | Local Partner patch |  | 1.0.0 |
 | 186 | `PartnerLargeMapMetaBuffer` | Partner Large Map Metadata Buffer | Local Partner patch |  | 1.0.1 |

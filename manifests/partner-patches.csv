@@ -6,8 +6,8 @@ PartnerDynamicWeightCompat,2.6.0,Current source and runtime,"Inventory transfers
 PartnerLargeMapMetaBuffer,1.0.1,Current source and runtime,Used for large-map metadata overflow,ZombieBuddy
 PartnerLegendaryWeaponDrops,1.0.0,Full independent source,Load and configuration verified,"P4Excalibar; Xixi's Weapon Pack; Bust_Masamune"
 PartnerLightweightBallistics,1.1.3,Full independent source,"Damage and audible volume verified in game",BritaCombinedB42 optional
-PartnerSpatialRefugeCoop,1.8.4,Partner scripts only,"Core upgrades shop respirator and autoloot fixes tested","myspatialrefuge; myspatialrefuge_shop"
+PartnerSpatialRefugeCoop,1.9.1,Partner scripts only,"Core upgrades shop respirator and autoloot fixes tested; basement module load confirmed; indoor status pending","myspatialrefuge; myspatialrefuge_shop"
 PartnerVSGirlAllFemaleBridge,1.0.0,Full independent source,Active in reference mod list,VSGirlBodyExtension
-PartnerVSGirlRenderGuard,1.0.0,Current source and runtime,Active after render-race diagnosis,"ZombieBuddy; VSGirlBodyExtension"
+PartnerVSGirlRenderGuard,1.0.1,Current source and runtime,"Four guard patches load; no matching exception in latest log; long stress test pending","ZombieBuddy; VSGirlBodyExtension"
 PartnerBritaArmorB42Compat,1.0.0,Documentation only,Used against Brita Armor 1.4.9,BritasArmorPackB42
 PartnerFantasyWorkshopCat71Fix,1.0.0,Documentation only,Used for cat71 model-name mismatch,FantasyWorkshopVS42_4.0
