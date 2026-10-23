@@ -1,4 +1,4 @@
--- Partner Lightweight Realistic Ballistics v1.1.2
+-- Partner Lightweight Realistic Ballistics v1.2.0
 --
 -- Performance contract:
 --   * no OnTick callback
@@ -367,15 +367,32 @@ local function normalizedAmmo(ammo)
     return string.lower(tostring(ammo or "")):gsub("[^%w]", "")
 end
 
-local function isBallisticAmmo(ammo)
+local function isTunableRangedAmmo(ammo)
     local key = normalizedAmmo(ammo)
     return key:find("bullet", 1, true) ~= nil
         or key:find("shotgun", 1, true) ~= nil
         or key:find("shell", 1, true) ~= nil
+        or key:find("arrow", 1, true) ~= nil
+        or key:find("bowammo", 1, true) ~= nil
+        or key:find("bolt", 1, true) ~= nil
+        or key:find("slingshotammo", 1, true) ~= nil
+        or key:find("railgunammo", 1, true) ~= nil
 end
 
 local function ammoCategory(ammo)
     local key = normalizedAmmo(ammo)
+    if key:find("bolt", 1, true) then
+        return "crossbow"
+    end
+    if key:find("arrow", 1, true) or key:find("bowammo", 1, true) then
+        return "bow"
+    end
+    if key:find("slingshotammo", 1, true) then
+        return "slingshot"
+    end
+    if key:find("railgunammo", 1, true) then
+        return "rifleHeavy"
+    end
     if key:find("shotgun", 1, true) or key:find("shell", 1, true) then
         return "shotgun"
     end
@@ -412,6 +429,95 @@ local function isAutomatic(instance)
         or modes:find("burst", 1, true) ~= nil
 end
 
+local machineGunPatterns = {
+    "m249", "m240", "m60", "m1919", "mg42", "mg3", "mg36", "rpk",
+    "pkm", "m134", "minigun", "lmg", "machinegun", "fnmag", "negev",
+    "ultimax", "mg4", "m2hb", "xm214", "gau17", "gau19", "shrike",
+    "k3lmg", "g21lmg", "mk43", "rpd", "dshk", "fixed_mg", "k12",
+}
+
+local sniperPatterns = {
+    "sniper", "huntingrifle", "varmintrifle", "msr7", "mosin", "svd",
+    "sv98", "m82", "wa2000", "barrett", "cheytac", "tac50", "l96",
+    "sako85", "psg1", "msg90", "scar20", "m14ebr", "m40", "m1903",
+    "m46_mauser", "anti_materiel", "dmr", "g28", "vssk", "svdk",
+    "osv_96", "bfg50", "gepard_m6", "railgun",
+}
+
+local smgPatterns = {
+    "smg", "pdw", "mp5", "mp7", "mp9", "p90", "ps90", "uzi",
+    "mac10", "mac11", "ump", "kriss", "vector", "vz61", "sten",
+    "scorpion", "bizon", "ppsh", "mp40", "thompson", "jatimatic",
+    "calico_m900", "model50", "model55", "m2hyde", "bt380", "bt9_",
+    "evo_", "kg9", "ar57_pdw",
+}
+
+local pistolAmmoPatterns = {
+    "9mm", "9x19", "45acp", "380acp", "380auto", "22lr", "57x28",
+    "40sw", "10mm", "32acp", "25acp", "357sig",
+}
+
+local function matchesAny(value, patterns)
+    for i = 1, #patterns do
+        if value:find(patterns[i], 1, true) then
+            return true
+        end
+    end
+    return false
+end
+
+function PLB.GetRangedClass(weapon)
+    if not weapon or safeGet(weapon, "isRanged") ~= true then
+        return nil
+    end
+
+    local fullType = string.lower(tostring(safeGet(weapon, "getFullType") or ""))
+    local ammo = normalizedAmmo(safeGet(weapon, "getAmmoType"))
+    if fullType == "" then
+        return nil
+    end
+    if not isTunableRangedAmmo(ammo) then
+        return nil
+    end
+    if ammo:find("bolt", 1, true) or fullType:find("crossbow", 1, true) then
+        return "Crossbow"
+    end
+    if ammo:find("arrow", 1, true) or ammo:find("bowammo", 1, true) then
+        return "Bow"
+    end
+    if ammo:find("slingshotammo", 1, true) then
+        return "Slingshot"
+    end
+    if ammo:find("shotgun", 1, true) or ammo:find("shell", 1, true) then
+        return "Shotgun"
+    end
+    if matchesAny(fullType, machineGunPatterns) then
+        return "MachineGun"
+    end
+    if matchesAny(fullType, sniperPatterns) then
+        return "Sniper"
+    end
+    if matchesAny(fullType, smgPatterns) then
+        return "SMG"
+    end
+
+    local twoHand = safeGet(weapon, "isTwoHandWeapon") == true
+    if not twoHand then
+        return "Handgun"
+    end
+    local automatic = isAutomatic(weapon)
+    local pistolAmmo = matchesAny(ammo, pistolAmmoPatterns)
+    if pistolAmmo and automatic then
+        return "SMG"
+    end
+    if not automatic and (ammo:find("308", 1, true)
+        or ammo:find("3006", 1, true) or ammo:find("50bmg", 1, true)
+        or ammo:find("railgun", 1, true)) then
+        return "Sniper"
+    end
+    return "Rifle"
+end
+
 local function captureDefinitions()
     if definitionsCaptured then
         return true
@@ -430,11 +536,13 @@ local function captureDefinitions()
     end
 
     local captured = 0
+    local excluded = 0
+    local classCounts = {}
     for i = 0, allItems:size() - 1 do
         local scriptItem = allItems:get(i)
         local isRanged = safeGet(scriptItem, "isRanged")
         local ammo = safeGet(scriptItem, "getAmmoType")
-        if isRanged and isBallisticAmmo(ammo) then
+        if isRanged and isTunableRangedAmmo(ammo) then
             local okInstance, instance = safeCall(scriptItem, "InstanceItem", nil)
             local fullType = tostring(safeGet(scriptItem, "getFullName") or "")
             if okInstance and instance and fullType ~= "" then
@@ -461,18 +569,37 @@ local function captureDefinitions()
                     twoHand = safeGet(instance, "isTwoHandWeapon") == true,
                     automatic = isAutomatic(instance),
                 }
+                local rangedClass = PLB.GetRangedClass(instance) or "Unclassified"
+                classCounts[rangedClass] = (classCounts[rangedClass] or 0) + 1
                 captured = captured + 1
             end
+        elseif isRanged then
+            excluded = excluded + 1
         end
     end
 
     definitionsCaptured = true
-    print(string.format("%s captured %d original ballistic weapon definitions.", MOD_TAG, captured))
+    local orderedClasses = {
+        "Handgun", "SMG", "Shotgun", "Rifle", "Sniper", "MachineGun",
+        "Bow", "Crossbow", "Slingshot", "Unclassified",
+    }
+    local classSummary = {}
+    for i = 1, #orderedClasses do
+        local name = orderedClasses[i]
+        classSummary[#classSummary + 1] = name .. "=" .. tostring(classCounts[name] or 0)
+    end
+    print(string.format(
+        "%s audited %d tunable ranged definitions (%s); %d special/explosive ranged definitions safely excluded.",
+        MOD_TAG, captured, table.concat(classSummary, ", "), excluded
+    ))
     return true
 end
 
 local function getSoloBonuses(category)
     if category == "shotgun" then return 1.40, 10, 15 end
+    if category == "crossbow" then return 1.55, 12, 20 end
+    if category == "bow" then return 1.45, 10, 15 end
+    if category == "slingshot" then return 1.20, 8, 10 end
     if category == "rifleHeavy" then return 1.70, 12, 25 end
     if category == "rifleIntermediate" then return 1.65, 12, 20 end
     if category == "handgunHeavy" then return 1.60, 14, 20 end
@@ -630,7 +757,7 @@ function PLB.ApplyDefinitions()
     -- failures. Live weapon instances are patched on player creation, inventory
     -- refresh and equip, which is the point at which their combat stats matter.
     print(string.format(
-        "%s v1.1.2 preset %d: instance patch mode ready. No definition failures, Tick or per-shot hooks.",
+        "%s v1.2.0 preset %d: instance patch mode ready. No definition failures, Tick or per-shot hooks.",
         MOD_TAG, PLB.Settings.preset
     ))
     return 0, 0

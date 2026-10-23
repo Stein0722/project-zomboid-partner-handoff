@@ -1,7 +1,7 @@
 name=Partner Lightweight Realistic Ballistics
 id=PartnerLightweightBallistics
-description=Ultra-light B42 firearm balance, verified audible volume controls, and Brita integral-suppressor repairs. Ordinary gun zombie hearing is unchanged. No custom projectile, OnTick, or per-shot Lua.
+description=Ultra-light B42 firearm and archery balance, class penetration controls, verified audible volume controls, and Brita integral-suppressor repairs. Ordinary weapon noise and zombie hearing are unchanged. No custom projectile, OnTick, or per-shot Lua.
 authors=Partner
-modversion=1.1.3
+modversion=1.2.0
 versionMin=42.21
 versionMax=42.21
