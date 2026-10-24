@@ -1,10 +1,11 @@
 Sandbox_EN = {
-    Sandbox_PartnerLegendaryDrops = "Partner Extreme-Rare Legendary Weapons",
-    Sandbox_PartnerLegendaryDrops_Enabled = "Enable extreme-rare container drops",
-    Sandbox_PartnerLegendaryDrops_Enabled_tooltip = "Newly generated containers can contain one weapon from Excalibar, Xixi, or Final Fantasy Weapons at an extremely low chance.",
-    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominator = "Container drop denominator",
-    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominator_tooltip = "The default 10000 means one chance in 10000 per container. Higher numbers are rarer. A successful roll creates exactly one random weapon.",
-    Sandbox_PartnerLegendaryDrops_SuppressOriginalSources = "Suppress original mod acquisition sources",
-    Sandbox_PartnerLegendaryDrops_SuppressOriginalSources_tooltip = "Disables Excalibar fixed and attached-zombie spawns plus Final Fantasy zombie drops and kill rewards, leaving only this extreme-rare container system.",
+    Sandbox_PartnerLegendaryDrops = "Partner Legendary Rewards",
+    Sandbox_PartnerLegendaryDrops_Enabled = "Enable legendary loot",
+    Sandbox_PartnerLegendaryDrops_Enabled_tooltip = "Includes 89 weapons and 3 sealed cases.",
+    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2 = "Per-weapon container denominator",
+    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2_tooltip = "Default 30000, independently per weapon. Sealed cases are 3x rarer.",
+    Sandbox_PartnerLegendaryDrops_ZombieChanceDenominator = "Per-weapon zombie denominator",
+    Sandbox_PartnerLegendaryDrops_ZombieChanceDenominator_tooltip = "Default 50000, independently per weapon. Sealed cases are 3x rarer.",
+    Sandbox_PartnerLegendaryDrops_SuppressOriginalSources = "Suppress original weapon sources",
+    Sandbox_PartnerLegendaryDrops_SuppressOriginalSources_tooltip = "Suppress compatible legacy acquisition paths. Does not delete generated loot.",
 }
-

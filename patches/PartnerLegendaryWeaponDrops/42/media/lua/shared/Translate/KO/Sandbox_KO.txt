@@ -1,10 +1,11 @@
 Sandbox_KO = {
-    Sandbox_PartnerLegendaryDrops = "파트너 극희귀 전설무기",
-    Sandbox_PartnerLegendaryDrops_Enabled = "극희귀 보관함 드랍 사용",
-    Sandbox_PartnerLegendaryDrops_Enabled_tooltip = "새로 생성되는 보관함에서 엑스칼리바, Xixi, FF7 무기 중 하나가 매우 낮은 확률로 발견됩니다.",
-    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominator = "보관함 발견확률 분모",
-    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominator_tooltip = "기본값 10000은 보관함 하나당 1/10000입니다. 숫자가 클수록 더 희귀합니다. 성공하면 전체 무기 목록 중 하나만 생성됩니다.",
-    Sandbox_PartnerLegendaryDrops_SuppressOriginalSources = "원본 모드의 별도 획득 경로 차단",
-    Sandbox_PartnerLegendaryDrops_SuppressOriginalSources_tooltip = "엑스칼리바의 고정 배치와 좀비 부착, FF7의 좀비 드랍과 킬 보상을 막아 이 극희귀 보관함 드랍만 남깁니다.",
+    Sandbox_PartnerLegendaryDrops = "파트너 극희귀 전설 보상",
+    Sandbox_PartnerLegendaryDrops_Enabled = "전설 보상 드롭 사용",
+    Sandbox_PartnerLegendaryDrops_Enabled_tooltip = "전설 무기 89종과 봉인 전설 상자 3종의 드롭을 추가합니다.",
+    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2 = "보관함 무기별 확률 분모",
+    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2_tooltip = "기본 30000. 89개 무기 각각 독립 확률이며 봉인 상자는 이보다 3배 희귀합니다.",
+    Sandbox_PartnerLegendaryDrops_ZombieChanceDenominator = "좀비 무기별 확률 분모",
+    Sandbox_PartnerLegendaryDrops_ZombieChanceDenominator_tooltip = "기본 50000. 새로 생성되는 좀비 소지품에 89종 무기를 각각 독립 판정합니다. 봉인 상자는 3배 희귀합니다.",
+    Sandbox_PartnerLegendaryDrops_SuppressOriginalSources = "원본 무기 모드 별도 드롭 차단",
+    Sandbox_PartnerLegendaryDrops_SuppressOriginalSources_tooltip = "기존 Excalibar, FF 무기 및 신규 무기 모드의 별도 획득 경로를 가능한 범위에서 차단합니다. 이미 생성된 물품은 제거하지 않습니다.",
 }
-

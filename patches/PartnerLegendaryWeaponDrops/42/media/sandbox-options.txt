@@ -8,14 +8,24 @@ option PartnerLegendaryDrops.Enabled
     translation = PartnerLegendaryDrops_Enabled,
 }
 
-option PartnerLegendaryDrops.ContainerChanceDenominator
+option PartnerLegendaryDrops.ContainerChanceDenominatorV2
 {
     type = integer,
     min = 1,
     max = 1000000,
-    default = 10000,
+    default = 30000,
     page = PartnerLegendaryDrops,
-    translation = PartnerLegendaryDrops_ContainerChanceDenominator,
+    translation = PartnerLegendaryDrops_ContainerChanceDenominatorV2,
+}
+
+option PartnerLegendaryDrops.ZombieChanceDenominator
+{
+    type = integer,
+    min = 1,
+    max = 1000000,
+    default = 50000,
+    page = PartnerLegendaryDrops,
+    translation = PartnerLegendaryDrops_ZombieChanceDenominator,
 }
 
 option PartnerLegendaryDrops.SuppressOriginalSources
@@ -25,4 +35,3 @@ option PartnerLegendaryDrops.SuppressOriginalSources
     page = PartnerLegendaryDrops,
     translation = PartnerLegendaryDrops_SuppressOriginalSources,
 }
-

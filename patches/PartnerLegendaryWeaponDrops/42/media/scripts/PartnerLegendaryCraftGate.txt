@@ -1,0 +1,71 @@
+// Soft override only the first-time assembly recipes.
+// Keep blade forging, repairs, broken-weapon rebuilding, cases, recolours and sheaths.
+// Based on B42 craftRecipe OnTest and Tags support. Requires in-game validation.
+module Base
+{
+    craftRecipe MakeLegendaryTacticalSword
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryTacticalTomahawk
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryTacticalAxe
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryTacticalCrowbar
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryTacticalBat
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryTacticalHammer
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryTacticalKnife
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryTacticalSledgehammer
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryTacticalSpear
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryKatanaBlack
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+
+    craftRecipe MakeLegendaryWakizashiBlack
+    {
+        OnTest = PartnerLegendaryCraftGate.AlwaysFalse,
+        Tags = PartnerLegendaryDisabledRecipe,
+    }
+}

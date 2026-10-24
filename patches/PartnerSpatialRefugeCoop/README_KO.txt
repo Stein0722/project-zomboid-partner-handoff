@@ -1,4 +1,4 @@
-Partner Shared Spatial Refuge + Personal Wallet 1.9.1
+Partner Shared Spatial Refuge + Personal Wallet 1.9.2
 
 기능
 - 협동 서버의 모든 플레이어가 첫 번째로 만들어진 아공간 하나를 함께 사용합니다.
@@ -85,4 +85,7 @@ v1.9.1
 - My Spatial Refuge B42.21의 `MSR.Basement` API를 상점 확장 모드가 요구하는 예전 `MSR_BasementGeneration` 이름으로 안전하게 연결합니다.
 - 최신 로그에서 지하실 확장 모듈 로딩은 확인했습니다.
 - 실제 지하실의 실내 판정은 지하실 업그레이드 설치 후 별도로 확인해야 합니다.
+
+v1.9.2
+- 자동 줍기 알림 숫자를 B42 JSON 번역 형식에 맞춰 전달해 반복 문자열 형식 경고를 막았습니다.
 

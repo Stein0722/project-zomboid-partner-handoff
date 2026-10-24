@@ -175,7 +175,7 @@
 | 166 | `BritasArmorPackB42` | Brita's Armor Pack B42.20 \| 贝雷塔护甲全修复版 | Steam Workshop | [3780298456](https://steamcommunity.com/sharedfiles/filedetails/?id=3780298456) | 1.4.9 |
 | 167 | `myspatialrefuge` | My Spatial Refuge | Steam Workshop | [3632195933](https://steamcommunity.com/sharedfiles/filedetails/?id=3632195933) | 1.27.1 |
 | 168 | `myspatialrefuge_shop` | Shop Extension | Steam Workshop | [3711250417](https://steamcommunity.com/sharedfiles/filedetails/?id=3711250417) |  |
-| 169 | `PartnerSpatialRefugeCoop` | Partner Shared Spatial Refuge + Personal Wallet | Local Partner patch |  | 1.9.1 |
+| 169 | `PartnerSpatialRefugeCoop` | Partner Shared Spatial Refuge + Personal Wallet | Local Partner patch |  | 1.9.2 |
 | 170 | `BritaCombinedB42` | Brita Weapon and Armor B42 Unified Compatibility Port | Steam Workshop | [3777433827](https://steamcommunity.com/sharedfiles/filedetails/?id=3777433827) |  |
 | 171 | `AutoReload` | Auto Reload | Steam Workshop | [3389448389](https://steamcommunity.com/sharedfiles/filedetails/?id=3389448389) | 1.3 |
 | 172 | `ReloadAllAmmo` | ReloadAllAmmo [SP/MP] | Steam Workshop | [3774932027](https://steamcommunity.com/sharedfiles/filedetails/?id=3774932027) | 1.5 |
@@ -196,6 +196,10 @@
 | 187 | `P4Excalibar` | Excalibar | Steam Workshop | [2868777243](https://steamcommunity.com/sharedfiles/filedetails/?id=2868777243) |  |
 | 188 | `Xixi's Weapon Pack` | [B42]Xixi's Weapon Pack | Steam Workshop | [3442077203](https://steamcommunity.com/sharedfiles/filedetails/?id=3442077203) |  |
 | 189 | `Bust_Masamune` | Final Fantasy Weapons: Buster, Masamune, Mythril Rod, Cerberus & Gatling Gun | Steam Workshop | [3774344755](https://steamcommunity.com/sharedfiles/filedetails/?id=3774344755) | 42.20.24 |
-| 190 | `PartnerLegendaryWeaponDrops` | Partner Extreme-Rare Legendary Weapon Drops | Local Partner patch |  | 1.0.0 |
+| 190 | `PartnerLegendaryWeaponDrops` | Partner Extreme-Rare Legendary Weapon Drops | Local Partner patch |  | 1.2.1 |
 | 191 | `PartnerLightweightBallistics` | Partner Lightweight Realistic Ballistics | Local Partner patch |  | 1.1.3 |
 | 192 | `PartnerLegend` | Partner Legend - Titles and Medals | Local Partner patch |  | 0.1.2 |
+| 193 | `2858201402/dailystatisticsandgains` | Daily Report Journal (Build 42 stable) | Steam Workshop | [2858201402](https://steamcommunity.com/sharedfiles/filedetails/?id=2858201402) | 0.43 |
+| 194 | `LKB42` | Legendary Katana Wakizashi | Steam Workshop | [3668370011](https://steamcommunity.com/sharedfiles/filedetails/?id=3668370011) | 3.1.4 |
+| 195 | `LTWB42` | Legendary Tactical Weapons | Steam Workshop | [3689524052](https://steamcommunity.com/sharedfiles/filedetails/?id=3689524052) | 3.1.1 |
+| 196 | `PartnerJournalExtension` | Partner Journal Extension - Medals and Rewards | Local Partner patch |  | 0.4.3 |

@@ -4,9 +4,10 @@ PartnerMasteryExtension,0.2.1,Full independent source and tests,"Purple UI obser
 PartnerCoopZombieBuddyBridge,1.0.0,Full independent source and runtime,Used for co-op bootstrap,ZombieBuddy
 PartnerDynamicWeightCompat,2.6.0,Current source and runtime,"Inventory transfers and endurance behavior tested",ZombieBuddy
 PartnerLargeMapMetaBuffer,1.0.1,Current source and runtime,Used for large-map metadata overflow,ZombieBuddy
-PartnerLegendaryWeaponDrops,1.0.0,Full independent source,Load and configuration verified,"P4Excalibar; Xixi's Weapon Pack; Bust_Masamune"
+PartnerLegendaryWeaponDrops,1.2.1,Full independent source,"Current 89 weapons and 3 sealed cases synced; B42 procedural container guard statically verified; fresh runtime pending","P4Excalibar; Xixi's Weapon Pack; Bust_Masamune; LKB42; LTWB42"
 PartnerLightweightBallistics,1.1.3,Full independent source,"Damage and audible volume verified in game",BritaCombinedB42 optional
-PartnerSpatialRefugeCoop,1.9.1,Partner scripts only,"Core upgrades shop respirator and autoloot fixes tested; basement module load confirmed; indoor status pending","myspatialrefuge; myspatialrefuge_shop"
+PartnerSpatialRefugeCoop,1.9.2,Full independent Partner source,"Core upgrades shop respirator and autoloot fixes tested; B42 translation placeholder fix statically verified; fresh runtime pending","myspatialrefuge; myspatialrefuge_shop"
+PartnerJournalExtension,0.4.3,Full independent Partner source,"50 medals loaded in prior log; B42 translation placeholder fix statically verified; fresh runtime pending","Daily Report Journal; PartnerLegend"
 PartnerVSGirlAllFemaleBridge,1.0.0,Full independent source,Active in reference mod list,VSGirlBodyExtension
 PartnerVSGirlRenderGuard,1.0.1,Current source and runtime,"Four guard patches load; no matching exception in latest log; long stress test pending","ZombieBuddy; VSGirlBodyExtension"
 PartnerBritaArmorB42Compat,1.0.0,Documentation only,Used against Brita Armor 1.4.9,BritasArmorPackB42

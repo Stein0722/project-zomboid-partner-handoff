@@ -12,7 +12,7 @@
 ## 현재 기준
 
 - 게임: Project Zomboid Build 42.21.0
-- 기준 싱글 세이브의 활성 Mod ID: 191개
+- 기준 싱글 세이브의 활성 Mod ID: 196개
 - 공웹 파트너 시작점: [START_HERE_WEB_PARTNER.md](START_HERE_WEB_PARTNER.md)
 - 모드 목록 스냅샷: [docs/ACTIVE_MODS.md](docs/ACTIVE_MODS.md)
 - Partner 패치 목록: [docs/PATCH_CATALOG.md](docs/PATCH_CATALOG.md)
@@ -37,7 +37,7 @@
 - `PartnerBritaArmorB42Compat`: 원본 스크립트와 유사한 파생 코드가 있어 공개 코드 제외
 - `PartnerFantasyWorkshopCat71Fix`: 원본 FBX의 파일명 별칭이므로 모델 파일 제외
 
-`PartnerSpatialRefugeCoop`은 인수인계에 필요한 Partner Lua와 스크립트만 포함하며, 원본 모드 번역·자산은 포함하지 않습니다. 따라서 GitHub 사본만으로 완전 설치되는 배포본이 아니라 코드 검토용입니다.
+`PartnerSpatialRefugeCoop`과 `PartnerJournalExtension`은 우리가 작성한 코드·번역만 포함하며, 의존하는 창작마당 원본 모드의 코드와 자산은 포함하지 않습니다.
 
 ## 설치 전에
 

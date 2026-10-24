@@ -10,8 +10,8 @@ require "MSR_ShopData"
 local TAG = "[PartnerShopServices]"
 local DRAW_TOKEN = "Base.PartnerLegendaryDrawToken"
 local REPAIR_TOKEN = "Base.PartnerRepairWeaponsToken"
-local DRAW_COST = 5000
-local REPAIR_COST = 2000
+local DRAW_COST = 10000
+local REPAIR_COST = 4000
 local DRAW_HISTORY_KEY = "PartnerLegendaryShopDraws"
 
 local WEAPON_POOL = {
@@ -80,6 +80,37 @@ local WEAPON_POOL = {
     "Base.MythrilRod",
     "Base.Cerberus",
     "Base.BarretGatlingGun",
+
+    -- Lightweight v0.2: 29 new finished weapons, no craft parts/cases.
+    "LTW.LegendaryTacticalSword",
+    "LTW.LegendaryTacticalTomahawk",
+    "LTW.LegendaryTacticalAxe",
+    "LTW.LegendaryTacticalCrowbar",
+    "LTW.LegendaryTacticalBat",
+    "LTW.LegendaryTacticalHammer",
+    "LTW.LegendaryTacticalKnife",
+    "LTW.LegendaryTacticalSledgehammer",
+    "LTW.LegendaryTacticalSpear",
+    "LK.LegendaryKatanaBlack",
+    "LK.LegendaryKatanaBlue",
+    "LK.LegendaryKatanaBrown",
+    "LK.LegendaryKatanaGreen",
+    "LK.LegendaryKatanaGrey",
+    "LK.LegendaryKatanaOrange",
+    "LK.LegendaryKatanaPink",
+    "LK.LegendaryKatanaPurple",
+    "LK.LegendaryKatanaRed",
+    "LK.LegendaryKatanaWhite",
+    "LK.LegendaryWakizashiBlack",
+    "LK.LegendaryWakizashiBlue",
+    "LK.LegendaryWakizashiBrown",
+    "LK.LegendaryWakizashiGreen",
+    "LK.LegendaryWakizashiGrey",
+    "LK.LegendaryWakizashiOrange",
+    "LK.LegendaryWakizashiPink",
+    "LK.LegendaryWakizashiPurple",
+    "LK.LegendaryWakizashiRed",
+    "LK.LegendaryWakizashiWhite",
 }
 
 local availablePool = nil
@@ -167,7 +198,7 @@ local function processLegendaryDraw(player, token)
 
     if #remaining == 0 then
         refund(player, DRAW_COST)
-        player:Say("이미 모든 전설 무기를 뽑았습니다. 5,000코어를 돌려드렸습니다.")
+        player:Say("이미 모든 전설 무기를 뽑았습니다. 10,000코어를 돌려드렸습니다.")
         return
     end
 
@@ -176,7 +207,7 @@ local function processLegendaryDraw(player, token)
     local reward = inventory:AddItem(fullType)
     if not reward then
         refund(player, DRAW_COST)
-        player:Say("무기를 지급하지 못해 5,000코어를 돌려드렸습니다.")
+        player:Say("무기를 지급하지 못해 10,000코어를 돌려드렸습니다.")
         return
     end
 
@@ -221,7 +252,7 @@ local function processRepairService(player, token)
 
     if repaired == 0 then
         refund(player, REPAIR_COST)
-        player:Say("수리할 무기가 없어 2,000코어를 돌려드렸습니다.")
+        player:Say("수리할 무기가 없어 4,000코어를 돌려드렸습니다.")
         return
     end
 

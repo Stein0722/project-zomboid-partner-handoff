@@ -7,9 +7,10 @@
 | PartnerCoopZombieBuddyBridge | 1.0.0 | 협동 서버 시작 때 ZombieBuddy를 미리 연결 | 멀티 서버용 브리지로 사용 | 전체 독립 코드 |
 | PartnerDynamicWeightCompat | 2.6.0 | 최종 무게 0.01배, 실제 수납 한도 동기화, 과적 지구력 페널티 제거, MP 지도 보완 | 가방·바닥·캐릭터 이동과 피로 문제 확인 | 현재 런타임·소스 |
 | PartnerLargeMapMetaBuffer | 1.0.1 | 대형 맵 조합의 10 MiB 지도 메타데이터 버퍼 초과 | 대구 및 대형 맵용으로 사용 | 현재 런타임·소스 |
-| PartnerLegendaryWeaponDrops | 1.0.0 | 3개 무기 모드 완성품을 보관함 기준 1/10,000로 드랍 | 로드·설정 구성 확인 | 전체 독립 코드 |
+| PartnerLegendaryWeaponDrops | 1.2.1 | 89개 전설 무기·봉인 상자 3종의 희귀 드랍과 B42 절차용 컨테이너 예외 방지 | 기존 로드 확인, v1.2.1 정적 검증·인게임 재검증 대기 | 전체 독립 코드 |
 | PartnerLightweightBallistics | 1.1.3 | 바닐라·브리타 화력/역할, 총성 체감 음량, 일체형 소음기 오류 | 피해량·음량 인게임 확인 | 전체 독립 코드 |
-| PartnerSpatialRefugeCoop | 1.9.1 | 공용 아공간·공용 업그레이드·개인 지갑, 상점/우물/자동 줍기 및 지하실 API 호환 | 주요 기능 확인, 지하실 모듈 로딩 확인·실내 판정 대기 | Partner 스크립트만, 번역/원본 자산 제외 |
+| PartnerSpatialRefugeCoop | 1.9.2 | 공용 아공간·공용 업그레이드·개인 지갑, 상점/우물/자동 줍기 및 지하실 API 호환 | 주요 기능 확인, 자동줍기 번역 수정 정적 검증·인게임 재검증 대기 | 전체 독립 Partner 코드·번역 |
+| PartnerJournalExtension | 0.4.3 | Daily Report Journal에 Partner 훈장·보상 연결 및 자동줍기 알림 번역 제공 | 기존 로그에서 50개 훈장 로드, v0.4.3 인게임 재검증 대기 | 전체 독립 Partner 코드·번역 |
 | PartnerVSGirlAllFemaleBridge | 1.0.0 | 대용량 All-female 자산 없이 새 좀비를 여성으로 생성 | 현재 기준 목록에 활성 | 전체 독립 코드 |
 | PartnerVSGirlRenderGuard | 1.0.1 | VSGirl 착용 목록 경쟁 상태의 렌더 스레드 충돌 및 피복 계산 예외 방지 | 보호 패치 4개 로딩·최신 로그 무재발 확인 | 현재 런타임·소스 |
 | PartnerBritaArmorB42Compat | 1.0.0 | Brita Armor 1.4.9의 `getFullName` nil 검증 충돌 우회 | 지정 버전에서 사용 | 설명만, 파생 스크립트 제외 |

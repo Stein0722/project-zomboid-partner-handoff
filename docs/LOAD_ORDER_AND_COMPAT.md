@@ -16,6 +16,7 @@
 10. `P4Excalibar` → `Xixi's Weapon Pack` → `Bust_Masamune` → `PartnerLegendaryWeaponDrops`
 11. `BeyondTen` → `PartnerMasteryExtension`; `SkillJournal`도 켠 뒤 두 모드보다 아래에 `PartnerBeyondTenSkillJournalBridge`
 12. `PartnerLightweightBallistics` → `PartnerLegend`
+13. `Daily Report Journal`과 `PartnerLegend` → `PartnerJournalExtension` (마지막)
 
 ## 주요 Workshop ID
 

@@ -1,0 +1,7 @@
+name=Partner Journal Extension - Medals and Rewards
+id=PartnerJournalExtension
+description=Daily Report Journal extension with one-time core rewards, selective passives and achievement celebration bridge. Requires the original Daily Report Journal.
+authors=Partner
+modversion=0.4.3
+versionMin=42.21
+versionMax=42.21
