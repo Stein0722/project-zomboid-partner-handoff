@@ -20,6 +20,9 @@ PartnerMasteryExtension = {
     GetLevelProgress = function(_character, _perk)
         return 16, 50, 100
     end,
+    GetBonusEfficiency = function()
+        return 0.5
+    end,
 }
 
 xpSystemText = {

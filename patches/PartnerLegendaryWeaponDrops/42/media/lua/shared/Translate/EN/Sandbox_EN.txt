@@ -3,9 +3,9 @@ Sandbox_EN = {
     Sandbox_PartnerLegendaryDrops_Enabled = "Enable legendary loot",
     Sandbox_PartnerLegendaryDrops_Enabled_tooltip = "Includes 89 weapons and 3 sealed cases.",
     Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2 = "Per-weapon container denominator",
-    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2_tooltip = "Default 30000, independently per weapon. Sealed cases are 3x rarer.",
-    Sandbox_PartnerLegendaryDrops_ZombieChanceDenominator = "Per-weapon zombie denominator",
-    Sandbox_PartnerLegendaryDrops_ZombieChanceDenominator_tooltip = "Default 50000, independently per weapon. Sealed cases are 3x rarer.",
+    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2_tooltip = "Default 30000, independently per weapon. Sealed cases are 3x rarer. Lucky increases each container reward chance by 10% relative.",
+    Sandbox_PartnerLegendaryDrops_ZombieTotalChanceDenominatorV3 = "Total zombie legendary reward denominator",
+    Sandbox_PartnerLegendaryDrops_ZombieTotalChanceDenominatorV3_tooltip = "Default 10000. One aggregate roll per new zombie inventory for all 89 weapons and 3 sealed cases combined; at most one reward. Each case has 1/3 the weight of one weapon. Lucky gives +10% relative chance (1/10000 to about 1/9091), checked once after detection. Lucky also increases world-container weapon and sealed-case odds by 10% relative. Previously generated loot is unchanged.",
     Sandbox_PartnerLegendaryDrops_SuppressOriginalSources = "Suppress original weapon sources",
     Sandbox_PartnerLegendaryDrops_SuppressOriginalSources_tooltip = "Suppress compatible legacy acquisition paths. Does not delete generated loot.",
 }

@@ -1,0 +1,14 @@
+module Base
+{
+    sound PartnerLegendAchievement
+    {
+        category = UI,
+        is3D = false,
+        loop = false,
+        clip
+        {
+            file = media/sound/PartnerLegendAchievement.wav,
+            volume = 0.22,
+        }
+    }
+}

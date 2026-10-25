@@ -6,7 +6,7 @@
 
 1. 현재 기획: [`docs/PARTNER_LEGEND_PLAN.md`](docs/PARTNER_LEGEND_PLAN.md)
 2. 우리가 만든 모드: [`patches/`](patches/)
-3. 실제 활성 모드 191개: [`docs/ACTIVE_MODS.md`](docs/ACTIVE_MODS.md)
+3. 실제 활성 모드 199개: [`docs/ACTIVE_MODS.md`](docs/ACTIVE_MODS.md)
 4. 기존 패치 설명: [`docs/PATCH_CATALOG.md`](docs/PATCH_CATALOG.md)
 
 ## 이번 기능에 필요한 원본 모드
@@ -25,8 +25,11 @@
 - `patches/PartnerMasteryExtension` — 16~20레벨과 보너스 설정
 - `patches/PartnerBeyondTenSkillJournalBridge` — 11~20레벨 일기장 기록·복구
 - `patches/PartnerLightweightBallistics` — 총기 피해·관통·음량 설정
+- `patches/PartnerViewpointBallisticsBridge` — 쿼터뷰 PLB와 1·3인칭 VTB 자동 전환 시험판
 
 현재 권장 순서는 `BeyondTen` → `PartnerMasteryExtension` → `PartnerBeyondTenSkillJournalBridge`입니다.
+
+Viewpoint 본체·QOL·3D 모델팩은 본 세이브에서 사용 중이지만, `ViewpointTrueBallistics`와 탄도 브리지는 복제 세이브 전용입니다. 최신 상태와 남은 시험은 [`docs/VIEWPOINT_BALLISTICS_HANDOFF.md`](docs/VIEWPOINT_BALLISTICS_HANDOFF.md)를 먼저 확인하세요.
 
 ## 함께 일하는 방식
 
@@ -36,4 +39,4 @@
 
 공웹 파트너는 새 기능을 **원본 모드 수정이 아닌 독립 모드**로 `patches/PartnerLegend`에 작성하면 됩니다. 원본 창작마당 코드·세이브·로그·개인 경로는 커밋하지 않습니다. 구현이 끝나면 변경 파일과 시험 방법을 함께 남겨 주세요.
 
-현재 최우선 작업은 [`Partner Legend`](docs/PARTNER_LEGEND_PLAN.md) v0.1입니다.
+현재 최우선 작업은 새 기능 추가보다 Viewpoint 탄도 브리지, Partner Legend, Mastery 전투 기능의 회귀 검증과 안정화입니다.

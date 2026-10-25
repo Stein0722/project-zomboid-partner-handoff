@@ -1,7 +1,7 @@
-name=Partner Legend - Titles and Medals
+name=Partner Legend - Title Codex and Aura
 id=PartnerLegend
-description=Lightweight solo titles, medals and adjustable weapon-damage bonuses, B42.21.
+description=Single-player lightweight title codex, floating foot titles, coloured aura, and achievement celebration. Requires existing Partner Legend runtime files.
 authors=Partner
-modversion=0.1.2
+modversion=0.4.2
 versionMin=42.21
 versionMax=42.21

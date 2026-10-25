@@ -18,14 +18,14 @@ option PartnerLegendaryDrops.ContainerChanceDenominatorV2
     translation = PartnerLegendaryDrops_ContainerChanceDenominatorV2,
 }
 
-option PartnerLegendaryDrops.ZombieChanceDenominator
+option PartnerLegendaryDrops.ZombieTotalChanceDenominatorV3
 {
     type = integer,
     min = 1,
     max = 1000000,
-    default = 50000,
+    default = 10000,
     page = PartnerLegendaryDrops,
-    translation = PartnerLegendaryDrops_ZombieChanceDenominator,
+    translation = PartnerLegendaryDrops_ZombieTotalChanceDenominatorV3,
 }
 
 option PartnerLegendaryDrops.SuppressOriginalSources

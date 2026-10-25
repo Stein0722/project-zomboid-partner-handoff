@@ -1,5 +1,12 @@
 # Beyond Ten + Skill Journal 인수인계
 
+## 2026-10-25 현재 상태
+
+- 본 세이브에서 일기장 복구 뒤 긴둔기가 10레벨을 넘었고, 재시작·전투·프레임도 정상임을 사용자가 확인했습니다.
+- 기록자와 복구 캐릭터의 직업·특성 XP 배율이 다르면 같은 저장 노력량도 다른 절대 XP가 됩니다. 긴둔기 9레벨 4917.04에서 멈춘 이전 결과는 `toadtraits:problunt` 배율 차이였으며 브리지 손실이 아니었습니다.
+- 현재 로컬 `PartnerMasteryExtension`은 전투 패시브와 Viewpoint 3D 과잉관통 방지 가드가 더해진 `0.3.0-bridge-test`입니다.
+- `PartnerBeyondTenSkillJournalBridge`는 1.1.0을 유지합니다. 아래 v0.2.1 설명은 구현 연혁으로 남겨 둡니다.
+
 ## 현재 결론
 
 `PartnerBeyondTenSkillJournalBridge` v1.0.1은 복제 세이브에서 핵심 시험을 통과했습니다. 현재 저장소의 브리지는 선택적 16~20 XP 보존을 더한 v1.1.0이며 자동 시험까지 통과했습니다. `PartnerMasteryExtension` v0.2.1은 16~20 XP·보라색 UI·핵심 보너스 50% 연장과 실시간 설정을 제공합니다. 보라색 UI는 복제 세이브에서 확인했고 v0.2.1 계산은 자동 시험을 통과했습니다. Build 42 JSON 번역도 추가했습니다.

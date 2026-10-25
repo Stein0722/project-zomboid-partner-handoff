@@ -7,9 +7,13 @@ local function assertEqual(actual, expected, label)
 end
 
 local configured = nil
+local combatConfigured = nil
 PartnerMasteryExtension = {
     DEFAULT_BONUS_EFFICIENCY = 50,
     Configure = function(values) configured = values.bonusEfficiency end,
+}
+PartnerMasteryExtensionCombat = {
+    ApplySettings = function(values) combatConfigured = values end,
 }
 
 local registered = {}
@@ -61,9 +65,11 @@ assertEqual(#registered, 1, "one game-start sync")
 
 registered[1]()
 assertEqual(configured, 50, "default is applied at game start")
+assertEqual(combatConfigured.enabled, true, "combat defaults are applied at game start")
 
 created.sliders.BonusEfficiency.control.value = 125
 created.apply()
 assertEqual(configured, 125, "settings apply updates runtime value")
+assertEqual(combatConfigured.overpenetration, true, "combat settings remain enabled")
 
 print("PARTNER_MASTERY_OPTIONS_CONTRACT_TEST_OK")

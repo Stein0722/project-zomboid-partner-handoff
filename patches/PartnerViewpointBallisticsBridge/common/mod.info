@@ -1,0 +1,8 @@
+name=Partner Viewpoint Ballistics Bridge (TEST)
+id=PartnerViewpointBallisticsBridge
+description=Read-only Viewpoint mode detection; coordinates PartnerLightweightBallistics and Viewpoint True Ballistics. Requires TEST PLB build. No Workshop files copied.
+authors=Partner
+modversion=0.1.0
+versionMin=42.21
+versionMax=42.21
+require=PartnerLightweightBallistics,Viewpoint,ViewpointTrueBallistics

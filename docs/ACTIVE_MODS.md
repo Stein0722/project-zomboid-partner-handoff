@@ -1,8 +1,8 @@
 # 현재 싱글 세이브 활성 모드 목록
 
 - 기준 세이브: `2026-10-17_07-34-08`
-- 기준 파일 갱신 시각: `2026-10-22 06:40`
-- 활성 Mod ID 수: **192**
+- 기준 파일 갱신 시각: `2026-10-25 05:53`
+- 활성 Mod ID 수: **199**
 - 이 목록은 설치 상태의 스냅샷이며, 다른 세이브나 이후 변경을 자동 반영하지 않습니다.
 
 | 순서 | Mod ID | 표시 이름 | 출처 | Workshop | 버전 |
@@ -127,7 +127,7 @@
 | 118 | `SimpleOverhaulTraitsAndOccupations` | Simple Overhaul: Traits and Occupations (SOTO) | Steam Workshop | [2840805724](https://steamcommunity.com/sharedfiles/filedetails/?id=2840805724) |  |
 | 119 | `SkillJournal` | Skill Journal | Steam Workshop | [3776641628](https://steamcommunity.com/sharedfiles/filedetails/?id=3776641628) | 1.2.2 |
 | 120 | `BeyondTen` | Beyond Ten - Level 15 Skills | Steam Workshop | [3765241705](https://steamcommunity.com/sharedfiles/filedetails/?id=3765241705) |  |
-| 121 | `PartnerMasteryExtension` | Partner Mastery Extension - Level 20 Beta | Local Partner patch |  | 0.2.1 |
+| 121 | `PartnerMasteryExtension` | Partner Mastery Extension - Level 20 + Combat | Local Partner patch |  | 0.3.0-bridge-test |
 | 122 | `PartnerBeyondTenSkillJournalBridge` | Partner Beyond Ten - Skill Journal Bridge | Local Partner patch |  | 1.1.0 |
 | 123 | `SKITTLE_LongTermPreservation4220` | Long Term Preservation [42.20] | Steam Workshop | [3774789651](https://steamcommunity.com/sharedfiles/filedetails/?id=3774789651) | 1.2 |
 | 124 | `TheyKnewContinued` | They Knew Continued | Steam Workshop | [3813362974](https://steamcommunity.com/sharedfiles/filedetails/?id=3813362974) | 0.5.6 |
@@ -157,49 +157,52 @@
 | 148 | `ShadowCatTacticsGuardian` | " 影狸战术: 守护 " Shadow Cat Tactics: Guardian " | Steam Workshop | [3609052036](https://steamcommunity.com/sharedfiles/filedetails/?id=3609052036) |  |
 | 149 | `PZOptKorean` | PZ_Optimization 한글패치 [B42] | Steam Workshop | [3807119354](https://steamcommunity.com/sharedfiles/filedetails/?id=3807119354) |  |
 | 150 | `ZombieBuddy` | ZombieBuddy | Steam Workshop | [3619862853](https://steamcommunity.com/sharedfiles/filedetails/?id=3619862853) |  |
-| 151 | `SPNCC` | Spongie's Character Customisation | Steam Workshop | [3414634809](https://steamcommunity.com/sharedfiles/filedetails/?id=3414634809) | 5 |
-| 152 | `TombBody` | Tomb's Player Body | Steam Workshop | [3429790870](https://steamcommunity.com/sharedfiles/filedetails/?id=3429790870) |  |
-| 153 | `TombBodyTexNUDE` | Tomb's Player Body - Textures [NUDE] | Steam Workshop | [3429790870](https://steamcommunity.com/sharedfiles/filedetails/?id=3429790870) |  |
-| 154 | `TombBodyCustom` | Tomb's Player Body - [Customisation] | Steam Workshop | [3429790870](https://steamcommunity.com/sharedfiles/filedetails/?id=3429790870) |  |
-| 155 | `AddSlopFaces` | Add Slop Faces | Steam Workshop | [3810889791](https://steamcommunity.com/sharedfiles/filedetails/?id=3810889791) |  |
-| 156 | `AddSlopFacesNeckFixTombBodyTexNUDE` | Add Slop Faces - Neck Fix - Textures [NUDE] | Steam Workshop | [3810889791](https://steamcommunity.com/sharedfiles/filedetails/?id=3810889791) |  |
-| 157 | `PartnerCoopZombieBuddyBridge` | Partner Coop ZombieBuddy Bridge | Local Partner patch |  | 1.0.0 |
-| 158 | `BetterGeneratorInfo` | Better Generator Info | Steam Workshop | [3576056135](https://steamcommunity.com/sharedfiles/filedetails/?id=3576056135) | 1.0 |
-| 159 | `better-auto-mechanics` | Better Auto Mechanics | Steam Workshop | [3635856965](https://steamcommunity.com/sharedfiles/filedetails/?id=3635856965) | 1.24 |
-| 160 | `EQUIPMENT_UI_B42` | Equipment UI - [Standalone] | Steam Workshop | [3682936016](https://steamcommunity.com/sharedfiles/filedetails/?id=3682936016) |  |
-| 161 | `WolfExtractionQuest_KO_TRANSLATE` | 프로젝트 좀보이드 Wolf Extraction Quest 한글화 | Steam Workshop | [3009084198](https://steamcommunity.com/sharedfiles/filedetails/?id=3009084198) |  |
-| 162 | `WolfExtractionQuest` | Wolf Extraction Quest | Steam Workshop | [2987772693](https://steamcommunity.com/sharedfiles/filedetails/?id=2987772693) |  |
-| 163 | `WhoseKeyIsThis` | Whose Key Is This? | Steam Workshop | [3784348098](https://steamcommunity.com/sharedfiles/filedetails/?id=3784348098) |  |
-| 164 | `InventoryFastMove` | Inventory Fast Move | Steam Workshop | [3114330064](https://steamcommunity.com/sharedfiles/filedetails/?id=3114330064) |  |
-| 165 | `PartnerBritaArmorB42Compat` | Partner Brita Armor B42.21 Compatibility | Local Partner patch |  | 1.0.0 |
-| 166 | `BritasArmorPackB42` | Brita's Armor Pack B42.20 \| 贝雷塔护甲全修复版 | Steam Workshop | [3780298456](https://steamcommunity.com/sharedfiles/filedetails/?id=3780298456) | 1.4.9 |
-| 167 | `myspatialrefuge` | My Spatial Refuge | Steam Workshop | [3632195933](https://steamcommunity.com/sharedfiles/filedetails/?id=3632195933) | 1.27.1 |
-| 168 | `myspatialrefuge_shop` | Shop Extension | Steam Workshop | [3711250417](https://steamcommunity.com/sharedfiles/filedetails/?id=3711250417) |  |
-| 169 | `PartnerSpatialRefugeCoop` | Partner Shared Spatial Refuge + Personal Wallet | Local Partner patch |  | 1.9.2 |
-| 170 | `BritaCombinedB42` | Brita Weapon and Armor B42 Unified Compatibility Port | Steam Workshop | [3777433827](https://steamcommunity.com/sharedfiles/filedetails/?id=3777433827) |  |
-| 171 | `AutoReload` | Auto Reload | Steam Workshop | [3389448389](https://steamcommunity.com/sharedfiles/filedetails/?id=3389448389) | 1.3 |
-| 172 | `ReloadAllAmmo` | ReloadAllAmmo [SP/MP] | Steam Workshop | [3774932027](https://steamcommunity.com/sharedfiles/filedetails/?id=3774932027) | 1.5 |
-| 173 | `BetterSortCC` | Better Sorting | Steam Workshop | [2313387159](https://steamcommunity.com/sharedfiles/filedetails/?id=2313387159) | 2.1.5 |
-| 174 | `P4VideoMeister` | Video Meister | Steam Workshop | [2744797858](https://steamcommunity.com/sharedfiles/filedetails/?id=2744797858) |  |
-| 175 | `DismantleAllAtOnce` | Dismantle All at Once | Steam Workshop | [3761218629](https://steamcommunity.com/sharedfiles/filedetails/?id=3761218629) |  |
-| 176 | `PinyosShelfAware` | Shelf Aware! | Steam Workshop | [3775396697](https://steamcommunity.com/sharedfiles/filedetails/?id=3775396697) |  |
-| 177 | `SkillBookExpansionB42` | Skill Book Expansion | Steam Workshop | [3557111695](https://steamcommunity.com/sharedfiles/filedetails/?id=3557111695) |  |
-| 178 | `ReadBookBypassingLevelRestrictions` | Read Book Bypassing Level Restrictions | Steam Workshop | [3319538177](https://steamcommunity.com/sharedfiles/filedetails/?id=3319538177) |  |
-| 179 | `PartnerDynamicWeightCompat` | Partner All Weight 0.01x + MP Map Fix | Local Partner patch |  | 2.6.0 |
-| 180 | `Daegutest` | Daegutest | Steam Workshop | [3820861712](https://steamcommunity.com/sharedfiles/filedetails/?id=3820861712) |  |
-| 181 | `TombBodyCompat` | Tomb's Player Body - [Compatibility - Vanilla+] | Steam Workshop | [3431734923](https://steamcommunity.com/sharedfiles/filedetails/?id=3431734923) |  |
-| 182 | `VSGirlBodyExtension` | VSGirlBodyExtension | Steam Workshop | [3820897273](https://steamcommunity.com/sharedfiles/filedetails/?id=3820897273) | 1.19.27 |
-| 183 | `PartnerVSGirlRenderGuard` | Partner VSGirl Render Guard | Local Partner patch |  | 1.0.1 |
-| 184 | `VSGirlBodyExtensionClothingCompatibility` | VSGirlBodyExtension - Clothing Compatibility Patch | Local external mod |  | 1.0.2 |
-| 185 | `PartnerVSGirlAllFemaleBridge` | Partner VSGirl All-Female Zombie Bridge | Local Partner patch |  | 1.0.0 |
-| 186 | `PartnerLargeMapMetaBuffer` | Partner Large Map Metadata Buffer | Local Partner patch |  | 1.0.1 |
-| 187 | `P4Excalibar` | Excalibar | Steam Workshop | [2868777243](https://steamcommunity.com/sharedfiles/filedetails/?id=2868777243) |  |
-| 188 | `Xixi's Weapon Pack` | [B42]Xixi's Weapon Pack | Steam Workshop | [3442077203](https://steamcommunity.com/sharedfiles/filedetails/?id=3442077203) |  |
-| 189 | `Bust_Masamune` | Final Fantasy Weapons: Buster, Masamune, Mythril Rod, Cerberus & Gatling Gun | Steam Workshop | [3774344755](https://steamcommunity.com/sharedfiles/filedetails/?id=3774344755) | 42.20.24 |
-| 190 | `PartnerLegendaryWeaponDrops` | Partner Extreme-Rare Legendary Weapon Drops | Local Partner patch |  | 1.2.1 |
-| 191 | `PartnerLightweightBallistics` | Partner Lightweight Realistic Ballistics | Local Partner patch |  | 1.1.3 |
-| 192 | `PartnerLegend` | Partner Legend - Titles and Medals | Local Partner patch |  | 0.1.2 |
-| 193 | `2858201402/dailystatisticsandgains` | Daily Report Journal (Build 42 stable) | Steam Workshop | [2858201402](https://steamcommunity.com/sharedfiles/filedetails/?id=2858201402) | 0.43 |
-| 194 | `LKB42` | Legendary Katana Wakizashi | Steam Workshop | [3668370011](https://steamcommunity.com/sharedfiles/filedetails/?id=3668370011) | 3.1.4 |
-| 195 | `LTWB42` | Legendary Tactical Weapons | Steam Workshop | [3689524052](https://steamcommunity.com/sharedfiles/filedetails/?id=3689524052) | 3.1.1 |
-| 196 | `PartnerJournalExtension` | Partner Journal Extension - Medals and Rewards | Local Partner patch |  | 0.4.3 |
+| 151 | `Viewpoint` | Viewpoint | Steam Workshop | [3809306528](https://steamcommunity.com/sharedfiles/filedetails/?id=3809306528) | 0.1.6.1 |
+| 152 | `ProjectViewpointQOL` | Project Viewpoint QOL | Steam Workshop | [3811256204](https://steamcommunity.com/sharedfiles/filedetails/?id=3811256204) |  |
+| 153 | `PZVoxelStudioViewpoint` | 6277 3D models for Viewpoint [sour_kisel] | Steam Workshop | [3810302175](https://steamcommunity.com/sharedfiles/filedetails/?id=3810302175) | 1.0 |
+| 154 | `SPNCC` | Spongie's Character Customisation | Steam Workshop | [3414634809](https://steamcommunity.com/sharedfiles/filedetails/?id=3414634809) | 5 |
+| 155 | `TombBody` | Tomb's Player Body | Steam Workshop | [3429790870](https://steamcommunity.com/sharedfiles/filedetails/?id=3429790870) |  |
+| 156 | `TombBodyTexNUDE` | Tomb's Player Body - Textures [NUDE] | Steam Workshop | [3429790870](https://steamcommunity.com/sharedfiles/filedetails/?id=3429790870) |  |
+| 157 | `TombBodyCustom` | Tomb's Player Body - [Customisation] | Steam Workshop | [3429790870](https://steamcommunity.com/sharedfiles/filedetails/?id=3429790870) |  |
+| 158 | `AddSlopFaces` | Add Slop Faces | Steam Workshop | [3810889791](https://steamcommunity.com/sharedfiles/filedetails/?id=3810889791) |  |
+| 159 | `AddSlopFacesNeckFixTombBodyTexNUDE` | Add Slop Faces - Neck Fix - Textures [NUDE] | Steam Workshop | [3810889791](https://steamcommunity.com/sharedfiles/filedetails/?id=3810889791) |  |
+| 160 | `PartnerCoopZombieBuddyBridge` | Partner Coop ZombieBuddy Bridge | Local Partner patch |  | 1.0.0 |
+| 161 | `BetterGeneratorInfo` | Better Generator Info | Steam Workshop | [3576056135](https://steamcommunity.com/sharedfiles/filedetails/?id=3576056135) | 1.0 |
+| 162 | `better-auto-mechanics` | Better Auto Mechanics | Steam Workshop | [3635856965](https://steamcommunity.com/sharedfiles/filedetails/?id=3635856965) | 1.24 |
+| 163 | `EQUIPMENT_UI_B42` | Equipment UI - [Standalone] | Steam Workshop | [3682936016](https://steamcommunity.com/sharedfiles/filedetails/?id=3682936016) |  |
+| 164 | `WolfExtractionQuest_KO_TRANSLATE` | 프로젝트 좀보이드 Wolf Extraction Quest 한글화 | Steam Workshop | [3009084198](https://steamcommunity.com/sharedfiles/filedetails/?id=3009084198) |  |
+| 165 | `WolfExtractionQuest` | Wolf Extraction Quest | Steam Workshop | [2987772693](https://steamcommunity.com/sharedfiles/filedetails/?id=2987772693) |  |
+| 166 | `WhoseKeyIsThis` | Whose Key Is This? | Steam Workshop | [3784348098](https://steamcommunity.com/sharedfiles/filedetails/?id=3784348098) |  |
+| 167 | `InventoryFastMove` | Inventory Fast Move | Steam Workshop | [3114330064](https://steamcommunity.com/sharedfiles/filedetails/?id=3114330064) |  |
+| 168 | `PartnerBritaArmorB42Compat` | Partner Brita Armor B42.21 Compatibility | Local Partner patch |  | 1.0.0 |
+| 169 | `BritasArmorPackB42` | Brita's Armor Pack B42.20 \| 贝雷塔护甲全修复版 | Steam Workshop | [3780298456](https://steamcommunity.com/sharedfiles/filedetails/?id=3780298456) | 1.4.9 |
+| 170 | `myspatialrefuge` | My Spatial Refuge | Steam Workshop | [3632195933](https://steamcommunity.com/sharedfiles/filedetails/?id=3632195933) | 1.27.1 |
+| 171 | `myspatialrefuge_shop` | Shop Extension | Steam Workshop | [3711250417](https://steamcommunity.com/sharedfiles/filedetails/?id=3711250417) |  |
+| 172 | `PartnerSpatialRefugeCoop` | Partner Shared Spatial Refuge + Personal Wallet | Local Partner patch |  | 1.9.2 |
+| 173 | `BritaCombinedB42` | Brita Weapon and Armor B42 Unified Compatibility Port | Steam Workshop | [3777433827](https://steamcommunity.com/sharedfiles/filedetails/?id=3777433827) |  |
+| 174 | `AutoReload` | Auto Reload | Steam Workshop | [3389448389](https://steamcommunity.com/sharedfiles/filedetails/?id=3389448389) | 1.3 |
+| 175 | `ReloadAllAmmo` | ReloadAllAmmo [SP/MP] | Steam Workshop | [3774932027](https://steamcommunity.com/sharedfiles/filedetails/?id=3774932027) | 1.5 |
+| 176 | `BetterSortCC` | Better Sorting | Steam Workshop | [2313387159](https://steamcommunity.com/sharedfiles/filedetails/?id=2313387159) | 2.1.5 |
+| 177 | `P4VideoMeister` | Video Meister | Steam Workshop | [2744797858](https://steamcommunity.com/sharedfiles/filedetails/?id=2744797858) |  |
+| 178 | `DismantleAllAtOnce` | Dismantle All at Once | Steam Workshop | [3761218629](https://steamcommunity.com/sharedfiles/filedetails/?id=3761218629) |  |
+| 179 | `PinyosShelfAware` | Shelf Aware! | Steam Workshop | [3775396697](https://steamcommunity.com/sharedfiles/filedetails/?id=3775396697) |  |
+| 180 | `SkillBookExpansionB42` | Skill Book Expansion | Steam Workshop | [3557111695](https://steamcommunity.com/sharedfiles/filedetails/?id=3557111695) |  |
+| 181 | `ReadBookBypassingLevelRestrictions` | Read Book Bypassing Level Restrictions | Steam Workshop | [3319538177](https://steamcommunity.com/sharedfiles/filedetails/?id=3319538177) |  |
+| 182 | `PartnerDynamicWeightCompat` | Partner All Weight 0.01x + MP Map Fix | Local Partner patch |  | 2.6.0 |
+| 183 | `Daegutest` | Daegutest | Steam Workshop | [3820861712](https://steamcommunity.com/sharedfiles/filedetails/?id=3820861712) |  |
+| 184 | `TombBodyCompat` | Tomb's Player Body - [Compatibility - Vanilla+] | Steam Workshop | [3431734923](https://steamcommunity.com/sharedfiles/filedetails/?id=3431734923) |  |
+| 185 | `VSGirlBodyExtension` | VSGirlBodyExtension | Steam Workshop | [3820897273](https://steamcommunity.com/sharedfiles/filedetails/?id=3820897273) | 1.19.27 |
+| 186 | `PartnerVSGirlRenderGuard` | Partner VSGirl Render Guard | Local Partner patch |  | 1.0.1 |
+| 187 | `VSGirlBodyExtensionClothingCompatibility` | VSGirlBodyExtension - Clothing Compatibility Patch | Local external mod |  | 1.0.2 |
+| 188 | `PartnerVSGirlAllFemaleBridge` | Partner VSGirl All-Female Zombie Bridge | Local Partner patch |  | 1.0.0 |
+| 189 | `PartnerLargeMapMetaBuffer` | Partner Large Map Metadata Buffer | Local Partner patch |  | 1.0.1 |
+| 190 | `P4Excalibar` | Excalibar | Steam Workshop | [2868777243](https://steamcommunity.com/sharedfiles/filedetails/?id=2868777243) |  |
+| 191 | `Xixi's Weapon Pack` | [B42]Xixi's Weapon Pack | Steam Workshop | [3442077203](https://steamcommunity.com/sharedfiles/filedetails/?id=3442077203) |  |
+| 192 | `Bust_Masamune` | Final Fantasy Weapons: Buster, Masamune, Mythril Rod, Cerberus & Gatling Gun | Steam Workshop | [3774344755](https://steamcommunity.com/sharedfiles/filedetails/?id=3774344755) | 42.20.24 |
+| 193 | `PartnerLegendaryWeaponDrops` | Partner Extreme-Rare Legendary Weapon Drops | Local Partner patch |  | 1.3.0 |
+| 194 | `PartnerLightweightBallistics` | Partner Unified Ballistics (Viewpoint Bridge TEST) | Local Partner patch |  | 1.3.1-test-bridge |
+| 195 | `PartnerLegend` | Partner Legend - Title Codex and Aura | Local Partner patch |  | 0.4.2 |
+| 196 | `2858201402/dailystatisticsandgains` | Daily Report Journal (Build 42 stable) | Steam Workshop | [2858201402](https://steamcommunity.com/sharedfiles/filedetails/?id=2858201402) | 0.43 |
+| 197 | `LKB42` | Legendary Katana Wakizashi | Steam Workshop | [3668370011](https://steamcommunity.com/sharedfiles/filedetails/?id=3668370011) | 3.1.4 |
+| 198 | `LTWB42` | Legendary Tactical Weapons | Steam Workshop | [3689524052](https://steamcommunity.com/sharedfiles/filedetails/?id=3689524052) | 3.1.1 |
+| 199 | `PartnerJournalExtension` | Partner Journal Extension - Medals and Rewards | Local Partner patch |  | 0.4.3 |

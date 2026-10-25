@@ -2,7 +2,7 @@
 
 ## Partner 패치 권장 순서
 
-아래는 관련 모드끼리의 상대 순서입니다. 전체 188개 목록은 [ACTIVE_MODS.md](ACTIVE_MODS.md)를 봅니다.
+아래는 관련 모드끼리의 상대 순서입니다. 전체 199개 목록은 [ACTIVE_MODS.md](ACTIVE_MODS.md)를 봅니다.
 
 1. `ZombieBuddy`
 2. `PartnerCoopZombieBuddyBridge`는 기본 모드 목록에서 활성화하되 서버 세이브의 Mods 목록에는 넣지 않음
@@ -17,6 +17,8 @@
 11. `BeyondTen` → `PartnerMasteryExtension`; `SkillJournal`도 켠 뒤 두 모드보다 아래에 `PartnerBeyondTenSkillJournalBridge`
 12. `PartnerLightweightBallistics` → `PartnerLegend`
 13. `Daily Report Journal`과 `PartnerLegend` → `PartnerJournalExtension` (마지막)
+14. 본 세이브 Viewpoint 구성: `Viewpoint` + `ProjectViewpointQOL` + `PZVoxelStudioViewpoint`; VTB와 탄도 브리지는 비활성
+15. 복제 시험 전용: `Viewpoint`, `ViewpointTrueBallistics`, `PartnerLightweightBallistics`, `PartnerMasteryExtension`, `PartnerViewpointBallisticsBridge`를 모두 활성화하고 `VTB.UseInIsoView=false` 유지
 
 ## 주요 Workshop ID
 
@@ -39,17 +41,22 @@
 | Final Fantasy Weapons | 3774344755 |
 | Skill Book Expansion | 3557111695 |
 | Read Book Bypassing Level Restrictions | 3319538177 |
+| Viewpoint | 3809306528 |
+| Project Viewpoint QOL | 3811256204 |
+| PZVoxelStudio Viewpoint Models | 3810302175 |
+| Viewpoint True Ballistics | 3812864848 |
 
 ## 같이 켜면 안 되는 조합
 
 - 구 More Traits + More Traits Definitive
 - `42_VSGirlBodyAll_female` + `PartnerVSGirlAllFemaleBridge`
 - Project RPG를 검증 없이 현재 세이브에 재도입
-- Viewpoint 계열 전체를 성능 기준 없이 한꺼번에 재도입
+- 본 세이브에서 검증 없이 `ViewpointTrueBallistics`와 `PartnerViewpointBallisticsBridge` 활성화
 
 ## 버전 한정 주의
 
 - Brita Armor 호환패치는 확인 버전 1.4.9 기준입니다. 업데이트되면 원본 해시와 오류 재검사가 필요합니다.
 - Partner 패치들은 Build 42.21 기준입니다.
-- `PartnerMasteryExtension` 0.2.1은 Beyond Ten 1.3.4 / API 1과 싱글플레이만 지원합니다. 멀티 서버에서는 사용하지 않습니다.
+- `PartnerMasteryExtension` 0.3.0-bridge-test는 Beyond Ten 1.3.4 / API 1과 싱글플레이만 지원합니다. 멀티 서버에서는 사용하지 않습니다.
+- `PartnerViewpointBallisticsBridge` 0.1.0은 시험판입니다. Viewpoint/VTB의 API나 클래스가 바뀌면 다시 검증해야 합니다.
 - Workshop 업데이트 뒤에는 `mod.info`, 함수 이름, 로그를 다시 비교해야 합니다.

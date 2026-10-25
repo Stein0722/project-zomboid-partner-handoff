@@ -3,12 +3,14 @@
 | 패치 | 버전 | 해결한 문제 | 현재 확인 상태 | 공개 범위 |
 |---|---:|---|---|---|
 | PartnerBeyondTenSkillJournalBridge | 1.1.0 | Skill Journal이 Beyond Ten 11~15와 선택적 16~20 마스터리 XP를 기록·복구 | 1.0.1 인게임 통과, 1.1.0 자동 시험 통과·인게임 전 | 전체 독립 코드 |
-| PartnerMasteryExtension | 0.2.1 | 16~20 XP·보라색 UI와 핵심 숙련 보너스 50% 연장 | 보라색 UI 인게임 확인, 계산·설정·JSON 번역·1.3.4 통합 자동 시험 통과 | 전체 독립 코드 |
+| PartnerMasteryExtension | 0.3.0-bridge-test | 16~20 XP·보라색 UI, 15/20 전투 보너스, Viewpoint 3D 과잉관통 중복 방지 | 성장·복구 인게임 확인, 전투 계약 시험 통과, Viewpoint 장시간 시험 대기 | 전체 독립 코드 |
 | PartnerCoopZombieBuddyBridge | 1.0.0 | 협동 서버 시작 때 ZombieBuddy를 미리 연결 | 멀티 서버용 브리지로 사용 | 전체 독립 코드 |
 | PartnerDynamicWeightCompat | 2.6.0 | 최종 무게 0.01배, 실제 수납 한도 동기화, 과적 지구력 페널티 제거, MP 지도 보완 | 가방·바닥·캐릭터 이동과 피로 문제 확인 | 현재 런타임·소스 |
 | PartnerLargeMapMetaBuffer | 1.0.1 | 대형 맵 조합의 10 MiB 지도 메타데이터 버퍼 초과 | 대구 및 대형 맵용으로 사용 | 현재 런타임·소스 |
-| PartnerLegendaryWeaponDrops | 1.2.1 | 89개 전설 무기·봉인 상자 3종의 희귀 드랍과 B42 절차용 컨테이너 예외 방지 | 기존 로드 확인, v1.2.1 정적 검증·인게임 재검증 대기 | 전체 독립 코드 |
-| PartnerLightweightBallistics | 1.1.3 | 바닐라·브리타 화력/역할, 총성 체감 음량, 일체형 소음기 오류 | 피해량·음량 인게임 확인 | 전체 독립 코드 |
+| PartnerLegendaryWeaponDrops | 1.3.0 | 89개 전설 무기·봉인 상자 3종의 희귀 드랍, 제작 제한, B42 절차용 컨테이너 예외 방지 | 본 세이브 로드 확인, 반복 ItemPicker 예외 수정 후 재발 관찰 | 전체 독립 코드 |
+| PartnerLightweightBallistics | 1.3.1-test-bridge | 통합 총기·산탄 보정과 Viewpoint 시점별 탄도 소유권 전환 API | 기존 전투 확인, VTB 복제 세이브 전환 로그 확인, 장시간 시험 대기 | 전체 독립 코드 |
+| PartnerViewpointBallisticsBridge | 0.1.0 TEST | 쿼터뷰 PLB와 1·3인칭 VTB를 자동 전환하고 중복 관통 차단 | 자동 왕복 시험 통과, 복제 세이브 기본 전환·전투 확인, 본 세이브 비활성 | 전체 독립 코드 |
+| PartnerLegend | 0.4.2 | 칭호·훈장 UI, 발밑 칭호, 오오라, 업적 축하 효과와 자산 | 본 세이브 로드·표시 확인, 시점별 장시간 회귀 시험 대기 | 전체 독립 코드·자산 |
 | PartnerSpatialRefugeCoop | 1.9.2 | 공용 아공간·공용 업그레이드·개인 지갑, 상점/우물/자동 줍기 및 지하실 API 호환 | 주요 기능 확인, 자동줍기 번역 수정 정적 검증·인게임 재검증 대기 | 전체 독립 Partner 코드·번역 |
 | PartnerJournalExtension | 0.4.3 | Daily Report Journal에 Partner 훈장·보상 연결 및 자동줍기 알림 번역 제공 | 기존 로그에서 50개 훈장 로드, v0.4.3 인게임 재검증 대기 | 전체 독립 Partner 코드·번역 |
 | PartnerVSGirlAllFemaleBridge | 1.0.0 | 대용량 All-female 자산 없이 새 좀비를 여성으로 생성 | 현재 기준 목록에 활성 | 전체 독립 코드 |
@@ -42,9 +44,11 @@
 - 자동 줍기는 5단계까지이며 4단계 500코어, 5단계 1,000코어입니다. 판매 품목별 ON/OFF가 가능합니다.
 - B42.21의 `MSR.Basement`를 상점 확장의 예전 지하실 모듈 이름에 연결합니다. 모듈 로딩은 확인했지만 실제 실내 판정은 업그레이드 설치 후 검증해야 합니다.
 
-### 경량 탄도
+### 경량 탄도와 Viewpoint
 
-- 별도 탄환 오브젝트나 좀비 전체 검색 없이 B42 기본 총기 정의를 조정합니다.
+- 쿼터뷰에서는 별도 탄환 오브젝트나 좀비 전체 검색 없이 B42 기본 총기 정의를 조정합니다.
 - 기본 싱글 프리셋은 권총 1.55~1.60배, 5.56 1.65배, .308/7.62 1.70배, 산탄 1.40배입니다.
 - 바닐라·브리타·소음기 음량을 따로 조절하되 일반 총기의 좀비 청각 범위는 유지합니다.
 - 브리타 일체형 소음기 총기 5종의 잘못된 총성과 유인 범위를 교정합니다.
+- 시험 브리지가 활성화된 복제 세이브에서는 1·3인칭을 VTB에 넘기고 PLB 산탄 추가 관통과 Mastery 총기 과잉관통을 멈춥니다.
+- 자세한 활성 상태와 안전 경계는 [VIEWPOINT_BALLISTICS_HANDOFF.md](VIEWPOINT_BALLISTICS_HANDOFF.md)에 있습니다.

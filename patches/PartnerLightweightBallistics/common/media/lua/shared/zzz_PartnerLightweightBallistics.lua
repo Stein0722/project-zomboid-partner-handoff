@@ -1,8 +1,8 @@
--- Partner Lightweight Realistic Ballistics v1.2.1
+-- Partner Lightweight Realistic Ballistics v1.3.0 (Unified + native-safe Shotgun v0.3.0)
 --
 -- Performance contract:
 --   * no OnTick callback
---   * one bounded local-square check on a successful shotgun hit only
+--   * no per-shot callback
 --   * no zombie/world scan
 --   * no custom projectile object
 --
@@ -34,6 +34,7 @@ PLB.Settings = PLB.Settings or {
 
 local profiles = {}
 local baselines = {}
+PLB.ExternalBallistics = false -- controlled by optional Viewpoint compatibility bridge
 local definitionsCaptured = false
 
 local sharedBritaAliases = {
@@ -348,9 +349,30 @@ local function safeCall(target, methodName, ...)
     return ok, value
 end
 
+-- Avoid invalidating the same weapon instance when the equip callback fires again.
+-- We only skip a setter when its corresponding getter conclusively matches.
+local valueGetters = {
+    setMinDamage='getMinDamage', setMaxDamage='getMaxDamage',
+    setHitChance='getHitChance', setCriticalChance='getCriticalChance',
+    setCriticalDamageMultiplier='getCriticalDamageMultiplier',
+    setAimingTime='getAimingTime', setRecoilDelay='getRecoilDelay',
+    setMaxHitCount='getMaxHitCount', setPiercingBullets='isPiercingBullets',
+    setProjectileSpread='getProjectileSpread', setSwingSound='getSwingSound',
+    setSoundRadius='getSoundRadius', setSoundVolume='getSoundVolume',
+    setNoiseRange='getNoiseRange', setNoiseFactor='getNoiseFactor',
+    setSoundGain='getSoundGain',
+}
 local function setValue(target, methodName, value)
-    if value == nil then
-        return true
+    if value == nil then return true end
+    local getter = valueGetters[methodName]
+    if getter then
+        local previous = safeGet(target, getter)
+        if previous ~= nil then
+            if type(value)=='number' and tonumber(previous) and
+                    math.abs(tonumber(previous)-value)<0.00001 then return true end
+            if type(value)=='boolean' and previous==value then return true end
+            if type(value)=='string' and tostring(previous)==value then return true end
+        end
     end
     local ok = safeCall(target, methodName, value)
     return ok
@@ -757,29 +779,128 @@ function PLB.ApplyDefinitions()
     -- failures. Live weapon instances are patched on player creation, inventory
     -- refresh and equip, which is the point at which their combat stats matter.
     print(string.format(
-        "%s v1.2.1 preset %d: instance patch mode ready. No definition failures or Tick hooks.",
+        "%s v1.3.0 unified preset %d: instance patch mode ready. No definition failures, Tick or per-shot hooks.",
         MOD_TAG, PLB.Settings.preset
     ))
     return 0, 0
 end
 
+-- Single instance pass: preset and integral suppressor first, then class penetration.
+-- Class penetration used to register its own additional equip callbacks; the
+-- unified mod deliberately calls it from here, exactly once per item.
+-- TEST BRIDGE CONTRACT: never guess a third-party's tuned value is ours.
+-- We only undo fields which still exactly match our calculated preset.
+-- Attachment-bearing weapons retain attachment modifiers; only our separate
+-- category overlay is reverted when its saved target still matches.
+local restoreFields = {
+    {'minDamage','getMinDamage','setMinDamage'},
+    {'maxDamage','getMaxDamage','setMaxDamage'},
+    {'hitChance','getHitChance','setHitChance'},
+    {'critChance','getCriticalChance','setCriticalChance'},
+    {'critMultiplier','getCriticalDamageMultiplier','setCriticalDamageMultiplier'},
+    {'aimingTime','getAimingTime','setAimingTime'},
+    {'recoilDelay','getRecoilDelay','setRecoilDelay'},
+    {'maxHit','getMaxHitCount','setMaxHitCount'},
+    {'piercing','isPiercingBullets','setPiercingBullets'},
+    {'spread','getProjectileSpread','setProjectileSpread'},
+}
+local function matches(a,b)
+    if a == nil or b == nil then return false end
+    if type(a)=='number' or type(b)=='number' then
+        a,b=tonumber(a),tonumber(b)
+        return a~=nil and b~=nil and math.abs(a-b)<0.0001
+    end
+    return a==b
+end
+local function restoreNativeOverlay(item)
+    local md=safeGet(item,'getModData')
+    local m=md and md.PartnerPLBPenetration
+    if type(m)~='table' then return true end
+    local count=safeGet(item,'getMaxHitCount')
+    local piercing=safeGet(item,'isPiercingBullets')
+    if matches(count,m.targetCount) and piercing == (m.targetPiercing==true) then
+        if m.baseCount~=nil then setValue(item,'setMaxHitCount',m.baseCount) end
+        setValue(item,'setPiercingBullets',m.basePiercing==true)
+        md.PartnerPLBPenetration=nil
+        return true
+    end
+    return false -- transient mastery penetration / other mod changed weapon
+end
+local function restoreForExternal(item,fullType)
+    local base=baselines[fullType]
+    if not base then return false end
+    local md=safeGet(item,'getModData')
+    if md and md.PartnerCombatTemporaryPenetration then return false end
+    local classOK=restoreNativeOverlay(item)
+    local parts=safeGet(item,'getAllWeaponParts')
+    if parts and safeGet(parts,'size') and safeGet(parts,'size')>0 then
+        return classOK -- never erase weapon-part adjustments
+    end
+    local expected=createTuning(fullType,base)
+    for _,pair in ipairs(restoreFields) do
+        local key,getter,setter=pair[1],pair[2],pair[3]
+        if (key~='maxHit' and key~='piercing') or classOK then
+            local current=safeGet(item,getter)
+            if matches(current,expected[key]) and base[key]~=nil then
+                setValue(item,setter,base[key])
+            end
+        end
+    end
+    return true
+end
+
 local function applyInstance(item)
-    local fullType = tostring(safeGet(item, "getFullType") or "")
-    if fullType == "" or not baselines[fullType] then
-        return false
+    local fullType = tostring(safeGet(item, 'getFullType') or '')
+    local applied = false
+    if PLB.ExternalBallistics then
+        return restoreForExternal(item,fullType)
     end
-    local weaponParts = safeGet(item, "getAllWeaponParts")
-    if weaponParts and weaponParts:size() > 0 then
-        -- Native/Brita attachments alter weapon-instance stats. The script
-        -- definition was already patched before the item loaded, so leave an
-        -- attached instance alone instead of erasing its scope/suppressor data.
-        return applyIntegralSuppressorFix(item, fullType)
+    if fullType ~= '' and baselines[fullType] then
+        local weaponParts = safeGet(item, 'getAllWeaponParts')
+        if weaponParts and weaponParts:size() > 0 then
+            -- Never clobber attachment-adjusted combat stats.
+            applied = applyIntegralSuppressorFix(item, fullType)
+        else
+            applied = applyTuning(item, fullType, false)
+            if integralSuppressorFixes[fullType] then
+                applied = applyIntegralSuppressorFix(item, fullType) and applied
+            end
+        end
     end
-    local applied = applyTuning(item, fullType, false)
-    if integralSuppressorFixes[fullType] then
-        applied = applyIntegralSuppressorFix(item, fullType) and applied
+    if type(PLB.ApplyClassPenetration)=='function' then
+        PLB.ApplyClassPenetration(item)
     end
     return applied
+end
+
+-- Called only on camera-mode transitions or by the existing equip hook.
+function PLB.SetExternalBallistics(on)
+    local nextState=(on==true)
+    if PLB.ExternalBallistics==nextState then return false end
+    PLB.ExternalBallistics=nextState
+    local p=getSpecificPlayer and getSpecificPlayer(0)
+    if p then
+        local main=safeGet(p,'getPrimaryHandItem')
+        local off=safeGet(p,'getSecondaryHandItem')
+        if main then applyInstance(main) end
+        if off and off~=main then applyInstance(off) end
+    end
+    local sg=PartnerShotgunProjectiles
+    if sg then
+        sg.suspended=nextState
+        if nextState and type(sg.Reset)=='function' then sg.Reset() end
+    end
+    print(MOD_TAG..' ballistics owner: '..(nextState and 'VTB 3D' or 'PLB isometric'))
+    return true
+end
+
+function PLB.RefreshBridgeWeapon()
+    local p=getSpecificPlayer and getSpecificPlayer(0)
+    if p then
+        local item=safeGet(p,'getPrimaryHandItem')
+        if item then return applyInstance(item) end
+    end
+    return false
 end
 
 local function patchContainer(container, depth)

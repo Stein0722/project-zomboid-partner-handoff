@@ -3,9 +3,9 @@ Sandbox_KO = {
     Sandbox_PartnerLegendaryDrops_Enabled = "전설 보상 드롭 사용",
     Sandbox_PartnerLegendaryDrops_Enabled_tooltip = "전설 무기 89종과 봉인 전설 상자 3종의 드롭을 추가합니다.",
     Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2 = "보관함 무기별 확률 분모",
-    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2_tooltip = "기본 30000. 89개 무기 각각 독립 확률이며 봉인 상자는 이보다 3배 희귀합니다.",
-    Sandbox_PartnerLegendaryDrops_ZombieChanceDenominator = "좀비 무기별 확률 분모",
-    Sandbox_PartnerLegendaryDrops_ZombieChanceDenominator_tooltip = "기본 50000. 새로 생성되는 좀비 소지품에 89종 무기를 각각 독립 판정합니다. 봉인 상자는 3배 희귀합니다.",
+    Sandbox_PartnerLegendaryDrops_ContainerChanceDenominatorV2_tooltip = "기본 30000. 무기별 독립 추첨, 봉인 상자는 3배 희귀합니다. 행운 특성 보유 시 모든 보관함 전설 보상 판정에 +10% 상대 확률이 적용됩니다.",
+    Sandbox_PartnerLegendaryDrops_ZombieTotalChanceDenominatorV3 = "좀비 전설 보상 전체 확률 분모",
+    Sandbox_PartnerLegendaryDrops_ZombieTotalChanceDenominatorV3_tooltip = "기본 10000. 새로 생성되는 좀비 인벤토리마다 모든 전설 보상을 합쳐 1/10000 확률로 단 1개가 나옵니다. 성공 시 89종 무기와 3종 봉인 상자 중 가중 선택(개별 상자 가중치 1, 무기 3). 행운 특성 보유 시 좀비 전체 드롭 확률이 10% 상대 증가(1/10000 → 약 1/9091). 이미 생성된 좀비 소지품은 변경하지 않습니다.",
     Sandbox_PartnerLegendaryDrops_SuppressOriginalSources = "원본 무기 모드 별도 드롭 차단",
     Sandbox_PartnerLegendaryDrops_SuppressOriginalSources_tooltip = "기존 Excalibar, FF 무기 및 신규 무기 모드의 별도 획득 경로를 가능한 범위에서 차단합니다. 이미 생성된 물품은 제거하지 않습니다.",
 }

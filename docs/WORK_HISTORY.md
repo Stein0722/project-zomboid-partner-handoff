@@ -75,3 +75,12 @@
 - 브리지 1.1.0은 Extension이 있을 때 16~20 XP까지 기록·복구하고, 없으면 기존 11~15 동작을 유지합니다.
 - Lua 구문 검사, 독립 계약 시험, 설치된 Beyond Ten 1.3.4 원본 소스 통합 시험을 통과했습니다.
 - 보라색 20칸 UI는 복제 세이브에서 확인했습니다. 자연 16레벨 이후 보너스·재시작·사망 복구는 아직 실제 도달 전이며 v0.2.1은 싱글플레이 전용입니다.
+
+## 10. Viewpoint 재도입과 탄도 브리지
+
+- `Viewpoint` 0.1.6.1, `ProjectViewpointQOL`, `PZVoxelStudioViewpoint`를 본 세이브에 다시 활성화했습니다.
+- QOL 체크 뒤 3인칭 휠 줌이 정상 동작했고, `ThirdPerson.active` 클래스 경고는 실제 줌을 막지 않는 비치명 경고로 분류했습니다.
+- 쿼터뷰에서는 Partner Lightweight Ballistics, 1·3인칭에서는 Viewpoint True Ballistics만 피해 처리를 맡도록 `PartnerViewpointBallisticsBridge` v0.1.0 시험판을 만들었습니다.
+- PLB 1.3.1-test-bridge와 Mastery 0.3.0-bridge-test에는 VTB가 소유한 동안 산탄 추가 관통과 Mastery 총기 과잉관통을 멈추는 공개 전환 API만 추가했습니다.
+- 자동 모의 시험과 복제 세이브의 쿼터뷰→3인칭 전환 로그를 확인했고, 사용자는 시점별 기본 전투에 이상이 없다고 확인했습니다.
+- VTB와 브리지는 아직 본 세이브에 활성화하지 않았습니다. 부착물 총기·반복 왕복·대규모 전투 검증 뒤 정식 병합을 판단합니다.

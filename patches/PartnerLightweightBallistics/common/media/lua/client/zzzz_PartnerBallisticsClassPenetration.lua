@@ -38,13 +38,16 @@ local function sameNumber(a, b)
     return a ~= nil and b ~= nil and math.abs(a - b) < 0.001
 end
 
-local function tuneWeapon(item, report)
+local function tuneWeapon(item)
+    if PLB.ExternalBallistics then return true end
     local kind = PLB.GetRangedClass and PLB.GetRangedClass(item) or nil
     if not kind then
         return false
     end
 
-    local extra = math.floor(tonumber(PLB.PenetrationByClass[kind]) or 0)
+    -- Shotgun penetration is now owned by PartnerShotgunProjectiles; retain
+    -- vanilla/Brita pellet targeting for the red aim indicator.
+    local extra = kind=='Shotgun' and 0 or math.floor(tonumber(PLB.PenetrationByClass[kind]) or 0)
     if extra < 0 then extra = 0 end
     if extra > 4 then extra = 4 end
 
@@ -56,6 +59,9 @@ local function tuneWeapon(item, report)
     end
 
     local state = data.PartnerPLBPenetration
+    if kind=='Shotgun' and type(state)~='table' then
+        return true -- no shotgun native class overlay: do not touch gun stats
+    end
     local baseCount = currentCount
     local basePiercing = currentPiercing
 
@@ -70,12 +76,28 @@ local function tuneWeapon(item, report)
 
     local targetCount = math.min(8, math.max(1, baseCount) + extra)
     local targetPiercing = basePiercing or extra > 0
-    local okCount = pcall(function() item:setMaxHitCount(targetCount) end)
-    local okPiercing = pcall(function() item:setPiercingBullets(targetPiercing) end)
-    if not okCount or not okPiercing then
-        return false
+    -- Short-circuit identical values: no repeated native setter on equip/unequip.
+    local okCount,okPiercing = true,true
+    if not sameNumber(currentCount,targetCount) then
+        okCount = pcall(function() item:setMaxHitCount(targetCount) end)
     end
-
+    if currentPiercing ~= targetPiercing then
+        okPiercing = pcall(function() item:setPiercingBullets(targetPiercing) end)
+    end
+    if not okCount or not okPiercing then return false end
+    if kind=='Shotgun' then
+        -- Retire the old native shotgun penetration overlay, recovering saved
+        -- originals only when the existing old overlay is still recognizable.
+        data.PartnerPLBPenetration=nil
+        return true
+    end
+    if type(state)=='table'
+       and sameNumber(state.baseCount,baseCount)
+       and (state.basePiercing==true)==basePiercing
+       and sameNumber(state.targetCount,targetCount)
+       and (state.targetPiercing==true)==targetPiercing then
+        return true
+    end
     data.PartnerPLBPenetration = {
         baseCount = baseCount,
         basePiercing = basePiercing,
@@ -83,63 +105,10 @@ local function tuneWeapon(item, report)
         targetPiercing = targetPiercing,
         category = kind,
     }
-    if report then
-        print(string.format(
-            "[PartnerLightweightBallistics] equipped %s: class=%s, baseMaxHit=%d, bonus=%d, finalMaxHit=%d, piercing=%s.",
-            tostring(safe(item, "getFullType") or "unknown"),
-            tostring(kind),
-            math.floor(baseCount),
-            extra,
-            math.floor(targetCount),
-            tostring(targetPiercing)
-        ))
-    end
     return true
 end
 
 PLB.ApplyClassPenetration = tuneWeapon
 
-local beforeInventory = PLB.ApplyPlayerInventory
-if type(beforeInventory) == "function" then
-    PLB.ApplyPlayerInventory = function(player)
-        local result = beforeInventory(player)
-        local inventory = safe(player, "getInventory")
-
-        local function visit(container, depth)
-            if not container or depth > 8 then
-                return 0
-            end
-            local items = safe(container, "getItems")
-            if not items then
-                return 0
-            end
-            local ok, count = pcall(function() return items:size() end)
-            if not ok then
-                return 0
-            end
-            local changed = 0
-            for i = 0, count - 1 do
-                local obj = items:get(i)
-                if tuneWeapon(obj, false) then
-                    changed = changed + 1
-                end
-                local child = safe(obj, "getInventory")
-                if child then
-                    changed = changed + visit(child, depth + 1)
-                end
-            end
-            return changed
-        end
-
-        local changed = visit(inventory, 0)
-        if changed > 0 then
-            print(string.format("[PartnerLightweightBallistics] class penetration refreshed on %d ranged weapon(s).", changed))
-        end
-        return result
-    end
-end
-
--- Registered after the original handlers: preset tuning runs first, then this
--- independent class bonus. It therefore works in every preset.
-Events.OnEquipPrimary.Add(function(_, item) tuneWeapon(item, true) end)
-Events.OnEquipSecondary.Add(function(_, item) tuneWeapon(item, true) end)
+-- No separate inventory sweep or equip listeners: applyInstance() in the
+-- shared core invokes PLB.ApplyClassPenetration in the same pass.

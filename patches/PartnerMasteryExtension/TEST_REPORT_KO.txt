@@ -1,0 +1,22 @@
+파트너 마스터리 확장 0.3.0 통합 전투 패시브 테스트 기록
+
+실제 코드 / Lua 5.4 mock
+- CombatConfig/CombatLogic/CombatMain Lua syntax OK
+- Level 14: 3 passives inactive (no tier)
+- Level 15: splash 1% / 1.5 tile / 15% ; durability 0.25%
+- Level 20: splash 5% / 3 tile / 30% ; durability 1%
+- class overpenetration 20-level values and 15-level exact /3
+- confirmed melee hit and duplicate OnHitZombie event: one repair, one radial splash
+- radius outside victim excluded; original hit not double-counted
+- runtime options: toggles, chance/radius/damage changes, extra penetration scale
+- PZAPI ModOptions sync: default, OnGameStart, Apply
+- overpenetration: temporary extra hit count and piercing flag; attack finish restores
+- old Beyond Ten 1.3.4 integration + PME storage regression PASS
+- old PME skill UI regression test PASS after updating the outdated fixture
+- old PME 16-20 bonus-efficiency ModOptions regression PASS
+- ZIP integrity and complete source-file checks
+
+Limits
+- No real game engine or 179-mod simultaneous test available here.
+- Existing standalone 100% test mod MUST be disabled.
+- This is balanced first integrated build, confirm on a cloned save.

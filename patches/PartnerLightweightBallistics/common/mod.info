@@ -1,7 +1,7 @@
-name=Partner Lightweight Realistic Ballistics
+name=Partner Unified Ballistics (Viewpoint Bridge TEST)
 id=PartnerLightweightBallistics
-description=Ultra-light B42 firearm and archery balance, class penetration controls, event-only shotgun passthrough, verified audible volume controls, and Brita integral-suppressor repairs. Ordinary weapon noise and zombie hearing are unchanged. No custom projectile or OnTick Lua.
+description=Unified lightweight B42 firearm balance and native-aim-safe supplemental shotgun follow-through; one ModOptions panel. Replaces PartnerLightweightBallistics v1.2.0 and PartnerShotgunProjectiles v0.3.0. Disable the old standalone shotgun mod. SP beta; test copied saves.
 authors=Partner
-modversion=1.2.1
+modversion=1.3.1-test-bridge
 versionMin=42.21
 versionMax=42.21

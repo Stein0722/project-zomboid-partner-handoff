@@ -1,0 +1,10 @@
+v1.3.0 Unified Ballistics / SG v0.3.0 native-aim-safe
+Automated Lua 5.4 compile: PASS
+Original shotgun v0.3.0 regression (migration / native-hit-only / dedup / walls / moving zombies / slug-birdshot / no equip handler): PASS
+One ModOptions page using legacy PLB ID: PASS
+Merged KO / EN translations (42 required keys): PASS
+Shotgun native class overlay disabled; stale overlay restoration: PASS
+One on-equip primary and one secondary handler (previously two each): PASS
+Already-correct weapon stats skip setters: code review.
+ZIP integrity: PASS
+IN-GAME B42.21 test: NOT PERFORMED. Unconfirmed whether the residual 0.2s unequip hitch disappears.

@@ -1,6 +1,6 @@
 PartnerLegend = PartnerLegend or {}
 local L = PartnerLegend
-L.VERSION = "0.1.2"
+L.VERSION = "0.2.0"
 L.DATA_KEY = "PartnerLegend_v1"
 L.TITLES = {
     {100,"UI_PL_Title_100","First Blood"},
@@ -9,12 +9,12 @@ L.TITLES = {
     {10000,"UI_PL_Title_10000","Veteran Slayer"},
     {25000,"UI_PL_Title_25000","Legion's Nightmare"},
     {50000,"UI_PL_Title_50000","Death's Executor"},
+    {75000,"UI_PL_Title_75000","Avatar of Slaughter"},
     {100000,"UI_PL_Title_100000","Human Weapon"},
-    {250000,"UI_PL_Title_250000","Apocalypse Executor"},
-    {500000,"UI_PL_Title_500000","Calamity's End"},
-    {1000000,"UI_PL_Title_1000000","Savior of Humanity"},
-    {2000000,"UI_PL_Title_2000000","Annihilator"},
-    {5000000,"UI_PL_Title_5000000","Final Judge"}
+    {150000,"UI_PL_Title_150000","Apocalypse Executor"},
+    {250000,"UI_PL_Title_250000","Calamity's End"},
+    {500000,"UI_PL_Title_500000","Savior of Humanity"},
+    {1000000,"UI_PL_Title_1000000","Final Judge"},
 }
 L.MELEE_PERKS = {
     {"Axe","Axe"},{"LongBlunt","Long Blunt"},{"SmallBlunt","Short Blunt"},
@@ -108,8 +108,17 @@ function L.GetData(player)
         md[L.DATA_KEY]={titles={},medals={},initialized=false}
     end
     local data=md[L.DATA_KEY]
+    if data.titleVersion~=2 then
+        -- Historical v0.1.x title slots used different thresholds. Recalculate from kills.
+        data.titles={}
+        data.titleVersion=2
+    end
     if type(data.titles)~="table" then data.titles={} end
     if type(data.medals)~="table" then data.medals={} end
+    if type(data.auraPreferences)~="table" then data.auraPreferences={} end
+    if data.titleMode~="auto" and data.titleMode~="manual" and data.titleMode~="none" then
+        data.titleMode="auto"
+    end
     return data
 end
 function L.SkillLevel(player,id)
@@ -132,11 +141,49 @@ function L.Stats(player)
     local days=math.max(0,math.floor((tonumber(player:getHoursSurvived()) or 0)/24))
     return kills,days
 end
+-- Title selection is separate from medal unlocks and survives reloads.
+-- Use the threshold as a stable key, never the old v0.1.x array index.
+function L.EquipTitle(player,index)
+    local d=L.GetData(player)
+    local t=L.TITLES[index]
+    if not d or not t or not d.titles[index] then return false end
+    d.titleMode="manual"
+    d.equippedTitleThreshold=t[1]
+    return true
+end
+function L.SetTitleMode(player,mode)
+    local d=L.GetData(player)
+    if not d or (mode~="auto" and mode~="none") then return false end
+    d.titleMode=mode
+    return true
+end
+function L.ToggleAuraPreference(player,index)
+    local d=L.GetData(player)
+    local t=L.TITLES[index]
+    if not d or not t or not d.titles[index] then return false end
+    local key=tostring(t[1])
+    d.auraPreferences[key]=not d.auraPreferences[key]
+    -- UI preference only: an actual aura renderer is intentionally not installed.
+    return d.auraPreferences[key]
+end
+function L.AuraPreference(player,index)
+    local d=L.GetData(player)
+    local t=L.TITLES[index]
+    return d and t and d.auraPreferences[tostring(t[1])]==true or false
+end
 function L.BestTitle(player)
     local d=L.GetData(player)
     if not d then return L.GetTitleName(nil),0 end
+    if d.titleMode=="none" then return L.GetTitleName(nil),0 end
     local latest=0
-    for i=1,#L.TITLES do if d.titles[i] then latest=i end end
+    if d.titleMode=="manual" then
+        for i,t in ipairs(L.TITLES) do
+            if t[1]==d.equippedTitleThreshold and d.titles[i] then latest=i;break end
+        end
+        if latest==0 then return L.GetTitleName(nil),0 end
+    else
+        for i=1,#L.TITLES do if d.titles[i] then latest=i end end
+    end
     if latest==0 then return L.GetTitleName(nil),0 end
     return L.GetTitleName(L.TITLES[latest]),latest
 end
